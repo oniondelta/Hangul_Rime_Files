@@ -1,0 +1,15 @@
+# Rime dictionary
+# encoding: utf-8
+# 《韓語詞庫》
+# 『洋蔥』
+---
+name: hangeul.extended
+version: "202003"
+sort: by_weight #original
+use_preset_vocabulary: false
+#max_phrase_length: 7
+#min_phrase_weight: 100
+import_tables:
+  - hangeul
+  - phrases.kr_more
+...
