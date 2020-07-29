@@ -11,12 +11,13 @@
 # VR規則꽿엦엧첚修改
 # 202001補全Hangul Jamo Extended、Hangul Jamo Extended-A、Hangul Jamo Extended-B
 # 202003修正왕錯碼
+# 202007修正뫼一系列ㅚ簡化字根錯碼
 #
 # 〔漢字〕基本字根 和 簡速字根 都附註。
 # 〔單音〕只附註 基本字根。
 ---
 name: hangeul
-version: "202003"
+version: "202007"
 sort: by_weight #original
 use_preset_vocabulary: false
 ...
@@ -3138,34 +3139,34 @@ use_preset_vocabulary: false
 뫹	ose
 뫺	osx
 뫻	osw
-뫼	od	9000
-뫽	ody
-뫾	odf
-뫿	odv
-묀	odl	9000
-묁	odk
-묂	odg
-묃	odc
-묄	ods	9000
-묅	odj
-묆	odn
-묇	odr
-묈	odp
-묉	odt
-묊	odi
-묋	owd
-묌	odo
-묍	oda	9000
-묎	odh
-묏	odb	9000
-묐	odm
-묑	odq	9000
-묒	odu
-묓	odd
-묔	odz
-묕	ode
-묖	odx
-묗	odw
+뫼	ox	9000
+뫽	oxy
+뫾	oxf
+뫿	oxv
+묀	oxl	9000
+묁	oxk
+묂	oxg
+묃	oxc
+묄	oxs	9000
+묅	oxj
+묆	oxn
+묇	oxr
+묈	oxp
+묉	oxt
+묊	oxi
+묋	owx
+묌	oxo
+묍	oxa	9000
+묎	oxh
+묏	oxb	9000
+묐	oxm
+묑	oxq	9000
+묒	oxu
+묓	oxd
+묔	oxz
+묕	oxe
+묖	oxx
+묗	oxw
 묚	omf
 묛	omv
 묝	omk
