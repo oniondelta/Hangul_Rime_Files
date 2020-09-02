@@ -1,4 +1,4 @@
-# hangul-rime
+# hangul-rime（洋蔥韓文形碼方案）
 
 ### 部落格方案連結 (Blog)：
 - http://deltazone.pixnet.net/blog/post/341170670
