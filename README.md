@@ -1,6 +1,10 @@
 # hangul-rime
-#### 部落格方案連結 (Blog)：http://deltazone.pixnet.net/blog/post/341170670
-#### 洋蔥韓文形碼方案解說 (Description)：http://deltazone.pixnet.net/blog/post/264243364
+
+### 部落格方案連結 (Blog)：
+- http://deltazone.pixnet.net/blog/post/341170670
+
+### 洋蔥韓文形碼方案解說 (Description)：
+- http://deltazone.pixnet.net/blog/post/264243364
 
 #### ※ Commercial use is prohibited
 #### ※ 請勿使用於商業營利相關行為
