@@ -3,7 +3,7 @@
 ### 部落格方案連結 (Blog)：
 - http://deltazone.pixnet.net/blog/post/341170670
 
-### 洋蔥韓文形碼方案解說 (Description)：
+### 解說 (Description)：
 - http://deltazone.pixnet.net/blog/post/264243364
 
 #### ※ Commercial use is prohibited
