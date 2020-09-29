@@ -1,4 +1,4 @@
-# hangul-rime（洋蔥韓文形碼方案）
+# Hangul_Rime（洋蔥韓文形碼方案）
 
 #### ※ 請勿使用於商業營利相關行為
 #### ※ Commercial use is prohibited
