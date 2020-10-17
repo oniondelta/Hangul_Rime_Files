@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語2set❃
-  version: "202009"
+  version: "202010"
   author:
     - 『洋蔥』
   description: |
@@ -41,7 +41,7 @@ engine:
     - table_translator@hangeul_phrase
 
 menu:
-  alternative_select_keys: "0123456789"
+  alternative_select_keys: "1234567890"
   page_size: 10
 
 speller:
