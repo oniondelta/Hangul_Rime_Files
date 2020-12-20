@@ -924,7 +924,7 @@ preset_keyboards:
       - {label: 'ㅣ', click: l, long_click: '(){Left}', swipe_down: "=", key_back_color: bh2, key_text_color: th2}
       - {width: 5, key_back_color: bh2, key_text_color: th2}
 
-      - {click: Shift_L, width: 15, hilited_key_back_color: benter, key_back_color: bbs, key_text_color: tbs}
+      - {click: Shift_L_h, width: 15, on_key_back_color: benter, hilited_key_back_color: benter}
       - {label: 'ㅋ', click: z, long_click: '`', swipe_down: '[]{Left}', key_back_color: bh3, key_text_color: th3}
       - {label: 'ㅌ', click: x, long_click: cut, swipe_down: '{}{Left}', key_back_color: bh3, key_text_color: th3}
       - {label: 'ㅊ', click: c, long_click: copy, swipe_down: ' ', key_back_color: bh3, key_text_color: th3}
@@ -5688,6 +5688,7 @@ preset_keys:
   VOLUME_MUTE: {label: 靜音, send: VOLUME_MUTE}
   # 編輯
   Shift_L: {label: Shift, preview: '⇪', functional: false, send: Shift_L, shift_lock: long}
+  Shift_L_h: {label: Shift, preview: '⇪', functional: true, send: Shift_L, shift_lock: long}
   Return: {label: '↲', preview: '↲', functional: false, send: Return} #'↩'#label: Enter, preview: '↲'
   Hide: {label: 隱藏, send: BACK}
   BackSpace: {label: '⌫', preview: '⌫', repeatable: true, functional: false, send: BackSpace} #label: 退格, preview: '⇦'
