@@ -183,6 +183,8 @@ translator:
     - "xlit|·| |"
 
   comment_format:
+    - xform/pp/P/
+
 #    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
     - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP |ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|"
 
