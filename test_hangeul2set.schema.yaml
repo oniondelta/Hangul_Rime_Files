@@ -1,0 +1,534 @@
+# Rime schema settings
+# encoding: utf-8
+# 《韓語標準鍵位(2-set)設定頁》
+schema:
+  schema_id: hangeul2set # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
+  name: ❃韓語2set❃
+  version: "202104"
+  author:
+    - 『洋蔥』
+  description: |
+    韓文
+  dependencies:
+    - onlyword_20
+#    - cangjie5
+#    - Phonetic_tw
+#    - bopomofo_tw
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ "韓文", "英文" ] 
+  - name: full_shape
+    states: [ "半形", "全形" ]
+
+engine:
+  processors:
+    - lua_processor@endspace
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+#    - fluency_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - script_translator
+    - punct_translator
+    - table_translator@hangeul_phrase
+    - reverse_lookup_translator
+
+menu:
+  alternative_select_keys: "1234567890"
+  page_size: 10
+
+speller:
+  alphabet: "abcdefghijklmnopqrstuvwxyz;QWERTOP"
+  delimiter: " "
+  algebra:
+    - xform/mqo/QO/
+    - xform/mqp/QP/
+    - xform/mwo/WO/
+    - xform/mwp/WP/
+    - xform/meo/EO/
+    - xform/mep/EP/
+    - xform/mro/RO/
+    - xform/mrp/RP/
+    - xform/mto/TO/
+    - xform/mtp/TP/
+    - xform/qq/Q/
+    - xform/ww/W/
+    - xform/ee/E/
+    - xform/rr/R/
+    - xform/tt/T/
+    - xform/oo/O/
+    - xform/pp/P/
+    - derive/^Q/qq/ #
+    - derive/^W/ww/ #
+    - derive/^E/ee/ #
+    - derive/^R/rr/ ## derive/R/rr/
+    - derive/^T/tt/ ## derive/T/tt/
+#    - derive/O/oo/ ### derive/O/oo/ 不符合 Mac 韓語輸入法
+#    - derive/P/pp/ ### derive/P/pp/ 不符合 Mac 韓語輸入法
+
+translator:
+  dictionary: hangeul2set
+  prism: hangeul2set
+  enable_user_dict: true
+  enable_sentence: false
+  enable_completion: false
+  preedit_format:
+#    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+##    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP |ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|" #･
+
+##    - "xlit|ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ|뮤ᄎᄋᄃᄅ호ᅣᅥᅡᅵᅳᅮᅢᅦᄇᄀᄂ셔ᄑᄌ툐ᄏᄈᄍᄄᄁ썌ᅨ|"
+    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP |뮤ᄎᄋᄃᄅ호ᅣᅥᅡᅵᅳᅮᅢᅦᄇᄀᄂ셔ᄑᄌ툐ᄏᄈᄍᄄᄁ썌ᅨ·|"
+###########
+    - xform/\ᄅ\ᄒ/\ᆶ/
+    # - xform/([·;])\ᆶ([·;])/$1ㅀ$2/
+    # - xform/^\ᆶ/ㅀ/
+    # - xform/([·;])\ᆶ$/$1ㅀ/
+
+    - xform/\ᄅ\ᄇ/\ᆲ/
+    # - xform/([·;])\ᆲ([·;])/$1ㄼ$2/
+    # - xform/^\ᆲ/ㄼ/
+    # - xform/([·;])\ᆲ$/$1ㄼ/
+
+    - xform/\ᄅ\ᄐ/\ᆴ/
+    # - xform/([·;])\ᆴ([·;])/$1ㄾ$2/
+    # - xform/^\ᆴ/ㄾ/
+    # - xform/([·;])\ᆴ$/$1ㄾ/
+
+    - xform/\ᄅ\ᄑ/\ᆵ/
+    # - xform/([·;])\ᆵ([·;])/$1ㄿ$2/
+    # - xform/^\ᆵ/ㄿ/
+    # - xform/([·;])\ᆵ$/$1ㄿ/
+
+    - xform/\ᄅ\ᄉ/\ᆳ/
+    # - xform/([·;])\ᆳ([·;])/$1ㄽ$2/
+    # - xform/^\ᆳ/ㄽ/
+    # - xform/([·;])\ᆳ$/$1ㄽ/
+
+    - xform/\ᄅ\ᄀ/\ᆰ/
+    # - xform/([·;])\ᆰ([·;])/$1ㄺ$2/
+    # - xform/^\ᆰ/ㄺ/
+    # - xform/([·;])\ᆰ$/$1ㄺ/
+
+    - xform/\ᄅ\ᄆ/\ᆱ/
+    # - xform/([·;])\ᆱ([·;])/$1ㄻ$2/
+    # - xform/^\ᆱ/ㄻ/
+    # - xform/([·;])\ᆱ$/$1ㄻ/
+
+    - xform/\ᄂ\ᄒ/\ᆭ/
+    # - xform/([·;])\ᆭ([·;])/$1ㄶ$2/
+    # - xform/^\ᆭ/ㄶ/
+    # - xform/([·;])\ᆭ$/$1ㄶ/
+
+    - xform/\ᄂ\ᄌ/\ᆬ/
+    # - xform/([·;])\ᆬ([·;])/$1ㄵ$2/
+    # - xform/^\ᆬ/ㄵ/
+    # - xform/([·;])\ᆬ$/$1ㄵ/
+
+    - xform/\ᄇ\ᄉ/\ᆹ/
+    # - xform/([·;])\ᆹ([·;])/$1ㅄ$2/
+    # - xform/^\ᆹ/ㅄ/
+    # - xform/([·;])\ᆹ$/$1ㅄ/
+
+    - xform/\ᄀ\ᄉ/\ᆪ/
+    # - xform/([·;])\ᆪ([·;])/$1ㄳ$2/
+    # - xform/^\ᆪ/ㄳ/
+    # - xform/([·;])\ᆪ$/$1ㄳ/
+###########
+    - xform/\ᅩ\ᅡ/\ᅪ/
+    # - xform/([·;])\ᅪ([·;])/$1ㅘ$2/
+    # - xform/^\ᅪ/ㅘ/
+    # - xform/([·;])\ᅪ$/$1ㅘ/
+
+    - xform/\ᅩ\ᅢ/\ᅫ/
+    # - xform/([·;])\ᅫ([·;])/$1ㅙ$2/
+    # - xform/^\ᅫ/ㅙ/
+    # - xform/([·;])\ᅫ$/$1ㅙ/
+
+    - xform/\ᅩ\ᅵ/\ᅬ/
+    # - xform/([·;])\ᅬ([·;])/$1ㅚ$2/
+    # - xform/^\ᅬ/ㅚ/
+    # - xform/([·;])\ᅬ$/$1ㅚ/
+
+    - xform/\ᅮ\ᅥ/\ᅯ/
+    # - xform/([·;])\ᅯ([·;])/$1ㅝ$2/
+    # - xform/^\ᅯ/ㅝ/
+    # - xform/([·;])\ᅯ$/$1ㅝ/
+
+    - xform/\ᅮ\ᅵ/\ᅱ/
+    # - xform/([·;])\ᅱ([·;])/$1ㅟ$2/
+    # - xform/^\ᅱ/ㅟ/
+    # - xform/([·;])\ᅱ$/$1ㅟ/
+
+    - xform/\ᅮ\ᅦ/\ᅰ/
+    # - xform/([·;])\ᅰ([·;])/$1ㅞ$2/
+    # - xform/^\ᅰ/ㅞ/
+    # - xform/([·;])\ᅰ$/$1ㅞ/
+
+    - xform/\ᅳ\ᅵ/\ᅴ/
+    # - xform/([·;])\ᅴ([·;])/$1ㅢ$2/
+    # - xform/^\ᅴ/ㅢ/
+    # - xform/([·;])\ᅴ$/$1ㅢ/
+###########
+    - xform/\ᄇ\ᄇ/\ᄈ/
+    - xform/([·;])\ᄈ([·;])/$1ㅃ$2/
+    - xform/^\ᄈ$/ㅃ/
+    - xform/^\ᄈ([·;])/ㅃ$1/
+    - xform/([·;])\ᄈ$/$1ㅃ/
+
+    - xform/\ᄌ\ᄌ/\ᄍ/
+    - xform/([·;])\ᄍ([·;])/$1ㅉ$2/
+    - xform/^\ᄍ$/ㅉ/
+    - xform/^\ᄍ([·;])/ㅉ$1/
+    - xform/([·;])\ᄍ$/$1ㅉ/
+
+    - xform/\ᄃ\ᄃ/\ᄄ/
+    - xform/([·;])\ᄄ([·;])/$1ㄸ$2/
+    - xform/^\ᄄ$/ㄸ/
+    - xform/^\ᄄ([·;])/ㄸ$1/
+    - xform/([·;])\ᄄ$/$1ㄸ/
+###########
+    - xform/\ᄀ\ᄀ/\ᄁ/
+    - xform/\ᄁ([·;])/\ᆩ$1/
+    - xform/([^·;])\ᄁ$/$1\ᆩ/
+    - xform/([·;])\ᄁ([·;])/$1ㄲ$2/
+    - xform/([·;])\ᆩ([·;])/$1ㄲ$2/
+    - xform/^\ᄁ$/ㄲ/
+    - xform/^\ᆩ/ㄲ/
+    - xform/([·;])\ᄁ$/$1ㄲ/
+
+    - xform/\ᄉ\ᄉ/\ᄊ/
+    - xform/\ᄊ([·;])/\ᆻ$1/
+    - xform/([^·;])\ᄊ$/$1\ᆻ/
+    - xform/([·;])\ᄊ([·;])/$1ㅆ$2/
+    - xform/([·;])\ᆻ([·;])/$1ㅆ$2/
+    - xform/^\ᄊ$/ㅆ/
+    - xform/^\ᆻ/ㅆ/
+    - xform/([·;])\ᄊ$/$1ㅆ/
+###########
+    - xform/\ᄆ([·;])/\ᆷ$1/
+    - xform/([^·;])\ᄆ$/$1\ᆷ/
+    - xform/([·;])\ᄆ([·;])/$1ㅁ$2/
+    - xform/([·;])\ᆷ([·;])/$1ㅁ$2/
+    - xform/^\ᄆ$/ㅁ/
+    - xform/^\ᆷ/ㅁ/
+    - xform/([·;])\ᄆ$/$1ㅁ/
+
+    - xform/\ᄎ([·;])/\ᆾ$1/
+    - xform/([^·;])\ᄎ$/$1\ᆾ/
+    - xform/([·;])\ᄎ([·;])/$1ㅊ$2/
+    - xform/([·;])\ᆾ([·;])/$1ㅊ$2/
+    - xform/^\ᄎ$/ㅊ/
+    - xform/^\ᆾ/ㅊ/
+    - xform/([·;])\ᄎ$/$1ㅊ/
+
+    - xform/\ᄋ([·;])/\ᆼ$1/
+    - xform/([^·;])\ᄋ$/$1\ᆼ/
+    - xform/([·;])\ᄋ([·;])/$1ㅇ$2/
+    - xform/([·;])\ᆼ([·;])/$1ㅇ$2/
+    - xform/^\ᄋ$/ㅇ/
+    - xform/^\ᆼ/ㅇ/
+    - xform/([·;])\ᄋ$/$1ㅇ/
+
+    - xform/\ᄃ([·;])/\ᆮ$1/
+    - xform/([^·;])\ᄃ$/$1\ᆮ/
+    - xform/([·;])\ᄃ([·;])/$1ㄷ$2/
+    - xform/([·;])\ᆮ([·;])/$1ㄷ$2/
+    - xform/^\ᄃ$/ㄷ/
+    - xform/^\ᆮ/ㄷ/
+    - xform/([·;])\ᄃ$/$1ㄷ/
+
+    - xform/\ᄅ([·;])/\ᆯ$1/
+    - xform/([^·;])\ᄅ$/$1\ᆯ/
+    - xform/([·;])\ᄅ([·;])/$1ㄹ$2/
+    - xform/([·;])\ᆯ([·;])/$1ㄹ$2/
+    - xform/^\ᄅ$/ㄹ/
+    - xform/^\ᆯ/ㄹ/
+    - xform/([·;])\ᄅ$/$1ㄹ/
+
+    - xform/\ᄒ([·;])/\ᇂ$1/
+    - xform/([^·;])\ᄒ$/$1\ᇂ/
+    - xform/([·;])\ᄒ([·;])/$1ㅎ$2/
+    - xform/([·;])\ᇂ([·;])/$1ㅎ$2/
+    - xform/^\ᄒ$/ㅎ/
+    - xform/^\ᇂ/ㅎ/
+    - xform/([·;])\ᄒ$/$1ㅎ/
+
+    - xform/\ᄇ([·;])/\ᆸ$1/
+    - xform/([^·;])\ᄇ$/$1\ᆸ/
+    - xform/([·;])\ᄇ([·;])/$1ㅂ$2/
+    - xform/([·;])\ᆸ([·;])/$1ㅂ$2/
+    - xform/^\ᄇ$/ㅂ/
+    - xform/^\ᆸ/ㅂ/
+    - xform/([·;])\ᄇ$/$1ㅂ/
+
+    - xform/\ᄀ([·;])/\ᆨ$1/
+    - xform/([^·;])\ᄀ$/$1\ᆨ/
+    - xform/([·;])\ᄀ([·;])/$1ㄱ$2/
+    - xform/([·;])\ᆨ([·;])/$1ㄱ$2/
+    - xform/^\ᄀ$/ㄱ/
+    - xform/^\ᆨ/ㄱ/
+    - xform/([·;])\ᄀ$/$1ㄱ/
+
+    - xform/\ᄂ([·;])/\ᆫ$1/
+    - xform/([^·;])\ᄂ$/$1\ᆫ/
+    - xform/([·;])\ᄂ([·;])/$1ㄴ$2/
+    - xform/([·;])\ᆫ([·;])/$1ㄴ$2/
+    - xform/^\ᄂ$/ㄴ/
+    - xform/^\ᆫ/ㄴ/
+    - xform/([·;])\ᄂ$/$1ㄴ/
+
+    - xform/\ᄉ([·;])/\ᆺ$1/
+    - xform/([^·;])\ᄉ$/$1\ᆺ/
+    - xform/([·;])\ᄉ([·;])/$1ㅅ$2/
+    - xform/([·;])\ᆺ([·;])/$1ㅅ$2/
+    - xform/^\ᄉ$/ㅅ/
+    - xform/^\ᆺ/ㅅ/
+    - xform/([·;])\ᄉ$/$1ㅅ/
+
+    - xform/\ᄑ([·;])/\ᇁ$1/
+    - xform/([^·;])\ᄑ$/$1\ᇁ/
+    - xform/([·;])\ᄑ([·;])/$1ㅍ$2/
+    - xform/([·;])\ᇁ([·;])/$1ㅍ$2/
+    - xform/^\ᄑ$/ㅍ/
+    - xform/^\ᇁ/ㅍ/
+    - xform/([·;])\ᄑ$/$1ㅍ/
+
+    - xform/\ᄌ([·;])/\ᆽ$1/
+    - xform/([^·;])\ᄌ$/$1\ᆽ/
+    - xform/([·;])\ᄌ([·;])/$1ㅈ$2/
+    - xform/([·;])\ᆽ([·;])/$1ㅈ$2/
+    - xform/^\ᄌ$/ㅈ/
+    - xform/^\ᆽ/ㅈ/
+    - xform/([·;])\ᄌ$/$1ㅈ/
+
+    - xform/\ᄐ([·;])/\ᇀ$1/
+    - xform/([^·;])\ᄐ$/$1\ᇀ/
+    - xform/([·;])\ᄐ([·;])/$1ㅌ$2/
+    - xform/([·;])\ᇀ([·;])/$1ㅌ$2/
+    - xform/^\ᄐ$/ㅌ/
+    - xform/^\ᇀ/ㅌ/
+    - xform/([·;])\ᄐ$/$1ㅌ/
+
+    - xform/\ᄏ([·;])/\ᆿ$1/
+    - xform/([^·;])\ᄏ$/$1\ᆿ/
+    - xform/([·;])\ᄏ([·;])/$1ㅋ$2/
+    - xform/([·;])\ᆿ([·;])/$1ㅋ$2/
+    - xform/^\ᄏ$/ㅋ/
+    - xform/^\ᆿ/ㅋ/
+    - xform/([·;])\ᄏ$/$1ㅋ/
+###########
+    - xform/([·;])\ᅲ([·;])/$1ㅠ$2/
+    - xform/^\ᅲ/ㅠ/
+    - xform/([·;])\ᅲ$/$1ㅠ/
+
+    - xform/([·;])\ᅩ([·;])/$1ㅗ$2/
+    - xform/^\ᅩ/ㅗ/
+    - xform/([·;])\ᅩ$/$1ㅗ/
+
+    - xform/([·;])\ᅣ([·;])/$1ㅑ$2/
+    - xform/^\ᅣ/ㅑ/
+    - xform/([·;])\ᅣ$/$1ㅑ/
+
+    - xform/([·;])\ᅥ([·;])/$1ㅓ$2/
+    - xform/^\ᅥ/ㅓ/
+    - xform/([·;])\ᅥ$/$1ㅓ/
+
+    - xform/([·;])\ᅡ([·;])/$1ㅏ$2/
+    - xform/^\ᅡ/ㅏ/
+    - xform/([·;])\ᅡ$/$1ㅏ/
+
+    - xform/([·;])\ᅵ([·;])/$1ㅣ$2/
+    - xform/^\ᅵ/ㅣ/
+    - xform/([·;])\ᅵ$/$1ㅣ/
+
+    - xform/([·;])\ᅳ([·;])/$1ㅡ$2/
+    - xform/^\ᅳ/ㅡ/
+    - xform/([·;])\ᅳ$/$1ㅡ/
+
+    - xform/([·;])\ᅮ([·;])/$1ㅜ$2/
+    - xform/^\ᅮ/ㅜ/
+    - xform/([·;])\ᅮ$/$1ㅜ/
+
+    - xform/([·;])\ᅢ([·;])/$1ㅐ$2/
+    - xform/^\ᅢ/ㅐ/
+    - xform/([·;])\ᅢ$/$1ㅐ/
+
+    - xform/([·;])\ᅦ([·;])/$1ㅔ$2/
+    - xform/^\ᅦ/ㅔ/
+    - xform/([·;])\ᅦ$/$1ㅔ/
+
+    - xform/([·;])\ᅧ([·;])/$1ㅕ$2/
+    - xform/^\ᅧ/ㅕ/
+    - xform/([·;])\ᅧ$/$1ㅕ/
+
+    - xform/([·;])\ᅭ([·;])/$1ㅛ$2/
+    - xform/^\ᅭ/ㅛ/
+    - xform/([·;])\ᅭ$/$1ㅛ/
+
+    - xform/([·;])\ᅤ([·;])/$1ㅒ$2/
+    - xform/^\ᅤ/ㅒ/
+    - xform/([·;])\ᅤ$/$1ㅒ/
+
+    - xform/([·;])\ᅨ([·;])/$1ㅖ$2/
+    - xform/^\ᅨ/ㅖ/
+    - xform/([·;])\ᅨ$/$1ㅖ/
+
+  comment_format:
+#    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP |ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|"
+#    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP |뮤ᄎᄋᄃᄅ호ᅣᅥᅡᅵᅳᅮᅢᅦᄇᄀᄂ셔ᄑᄌ툐ᄏᄈᄍᄄᄁ썌ᅨ·|"
+#  disable_user_dict_for_patterns:
+#    - ^[a-z;]{1}$
+#    - ^[a-z;]{2}$
+#    - ^[a-z;]{3}$
+
+hangeul_phrase:
+  dictionary: ""
+  user_dict: hangeul2set_phrase
+  db_class: stabledb #tabledb
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: "1"
+
+reverse_lookup:
+  dictionary: onlyword_20.extended #Phonetic_tw #cangjie5 #bopomofo_tw 
+  enable_completion: false
+  prefix: "="
+  suffix: "'"
+  tips: 〔漢字反查〕
+  preedit_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+#    - "xlit|1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/-6347|ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦˊˇˋ˙|"
+#    - xform/^ㄦ//
+
+punctuator:
+  full_shape:
+    " " : { commit: "　" }
+    "<" : { commit: "，" }
+    ">" : { commit: "。" }
+    "?" : [ ？, ／, ÷ ]
+    ":" : [ ：, ； ]
+    "'" : { pair: [ "‘", "’" ] }
+    "\"" : { pair: [ "“", "”" ] }
+    "\\" : [ 、, ＼ ]
+    "|" : [ ·, ｜, "§", "¦" ]
+    "`" : ｀
+    "~" : ～
+    "!" : { commit: ！ }
+    "@" : [ ＠, ☯ ]
+    "#" : [ ＃, ⌘ ]
+    "%" : [ ％, "°", "℃" ]
+    "$" : [ ￥, "$", "€", "£", "¥", "¢", "¤" ]
+    "^" : { commit: …… }
+    "&" : ＆
+    "*" : [ ＊, ·, ・, ×, ※, ❂ ]
+    "(" : （
+    ")" : ）
+    "_" : [ ——, － ]
+    "+" : ＋
+    "=" : ＝
+    "[" : [ 「, 【, 《, 〔, ［ ]
+    "]" : [ 」, 】, 》, 〕, ］ ]
+    "{" : [ 『, 〖, 〈, ｛ ]
+    "}" : [ 』, 〗, 〉, ｝ ]
+  half_shape:
+    "`" : { commit: "₩" }
+#關#    "|" : { commit: " " }  ##會空一格並上屏，原「|」鍵會失效變「空格」。可結合key_binder空白鍵，使空白鍵能空一格上屏。
+#    "`" : { commit: " " }  ##會空一格並上屏，原「`」鍵會失效變「空格」。可結合key_binder空白鍵，使空白鍵能空一格上屏。
+#    "/" : { commit: " " }  ##會空一格並上屏，原「/」鍵會失效變「空格」。可結合key_binder空白鍵，使空白鍵能空一格上屏。
+    "$" : [ "$", "₩", "＄", "¥", "￥", "€", "£", "￡", "₤", "¢", "￠", "₵", "₡", "¤", "৳", "฿", "₠", "₢", "₣", "₥", "₦", "₧", "₪", "₫", "₭", "₮", "₯", "₰", "₱", "₲", "₳", "₴", "₶", "₷", "₸", "₹", "₺", "₨", "﷼" ]
+    "%" : [ "%", "％", "‰", "‱", "°", "℃", "℉", "Å", "㏃", "㏆", "㎈", "㏄", "㏅", "㎝", "㎠", "㎤", "㏈", "㎗", "㎙", "㎓", "㎬", "㏉", "㏊", "㏋", "㎐", "㏌", "㎄", "㎅", "㎉", "㎏", "㎑", "㏍", "㎘", "㎞", "㏎", "㎢", "㎦", "㎪", "㏏", "㎸", "㎾", "㏀", "㏐", "㏓", "㎧", "㎨", "㎡", "㎥", "㎃", "㏔", "㎆", "㎎", "㎒", "㏕", "㎖", "㎜", "㎟", "㎣", "㏖", "㎫", "㎳", "㎷", "㎹", "㎽", "㎿", "㏁", "㎁", "㎋", "㎚", "㎱", "㎵", "㎻", "㏘", "㎩", "㎀", "㎊", "㏗", "㏙", "㏚", "㎰", "㎴", "㎺", "㎭", "㎮", "㎯", "㏛", "㏜", "㎔", "㏝", "㎂", "㎌", "㎍", "㎕", "㎛", "㎲", "㎶", "㎼" ]
+    "&" : [ "&", "＆", "＃", "＠", ⅟, ½, ↉, ⅓, ⅔, ¼, ⅕, ⅖, ⅗, ⅘, ⅙, ⅚, ⅐, ⅛, ⅜, ⅝, ⅞, ⅑, ⅒ ]
+    "*" : [ "*", ＊, "﹡", ※, ❂, ★, ☆, ✡, ❋, ❊, ❉, ❈, ❇, ❆, ❅, ❄, ❃, ❁, ❀, ✿, ✾, ✽, ✼, ✻, ✺, ✹, ✸, ✷, ✶, ✵, ✴, ✳, ✲, ✱, ✰, ✯, ✮, ✭, ✬, ✫, ✪, ✩, ✧, ✦, ✥, ✤, ✣, ✢, ⛤, ⛥, ⛦, ⛧ ]
+    "^" : [ "^", "+", "-", "×", "÷", "±", "=", "≠", "＝", "＋", "－", "＜", "＞", "∈", "∏", "∑", "≮", "≯", "∕", "√", "∝", "∞", ∟, ∠, ∥, ∧, ∨, ∩, ∪, ∫, ∮, ∴, ∵, ∷, ∽, ≈, ≌, ≒, ≡, ≤, ≥, ≦, ≧, ⊕, ⊙, ⊥, ⊿, ㏑, ㏒ ]
+#    "=" : { commit: "=" }
+    "-" : { commit: "-" }
+    "," : { commit: "," }
+    "." : { commit: "." }
+    ";" : [ ";", "…", "·", "`", "'", "\"" ]
+    "'" : { pair: [ "‘", "’" ] }
+    "\"" : { pair: [ "“", "”" ] }
+#############################
+    "A" : { commit: "ㅁ" }
+    "B" : { commit: "ㅠ" }
+    "C" : { commit: "ㅊ" }
+    "D" : { commit: "ㅇ" }
+#    "E" : { commit: "ㄸ" }
+    "F" : { commit: "ㄹ" }
+    "G" : { commit: "ㅎ" }
+    "H" : { commit: "ㅗ" }
+    "I" : { commit: "ㅑ" }
+    "J" : { commit: "ㅓ" }
+    "K" : { commit: "ㅏ" }
+    "L" : { commit: "ㅣ" }
+    "M" : { commit: "ㅡ" }
+    "N" : { commit: "ㅜ" }
+#    "O" : { commit: "ㅒ" }
+#    "P" : { commit: "ㅖ" }
+#    "Q" : { commit: "ㅃ" }
+#    "R" : { commit: "ㄲ" }
+    "S" : { commit: "ㄴ" }
+#    "T" : { commit: "ㅆ" }
+    "U" : { commit: "ㅕ" }
+    "V" : { commit: "ㅍ" }
+#    "W" : { commit: "ㅉ" }
+    "X" : { commit: "ㅌ" }
+    "Y" : { commit: "ㅛ" }
+    "Z" : { commit: "ㅋ" }
+#############################
+
+key_binder:
+  import_preset: default
+  bindings:
+### 避 RIME 原設定鍵位衝突 ###
+    - {accept: comma, send: comma, when: has_menu}
+    - {accept: comma, send: comma, when: paging}
+    - {accept: period, send: period, when: has_menu}
+    - {accept: period, send: period, when: paging}
+    - {accept: minus, send: minus, when: has_menu}
+    - {accept: minus, send: minus, when: paging}
+    - {accept: equal, send: equal, when: has_menu}
+    - {accept: equal, send: equal, when: paging}
+######################
+    - {accept: Left, send: Page_Up, when: paging}
+    - {accept: Right, send: Page_Down, when: paging}
+######################
+    - {accept: Tab, send: Shift+Left, when: paging} #Shift+Right #composing
+    - {accept: Shift+space, send: Page_Down, when: has_menu} #選字時可用「Shift」+「空白鍵」翻頁。 #send: Right #send: Down
+    - {accept: Shift+Tab, send: Page_Up, when: paging} #選字時可用「Shift」+「tab」翻頁。
+######################
+#    - {accept: Return, send: grave, when: has_menu}
+#    - {accept: Return, send: space, when: paging}
+#關#    - {accept: Return, send: space, when: has_menu} #return,enter直出
+######################
+#    - {accept: space, send: grave, when: has_menu} #按空白鍵後會空一格並上屏，原「`」鍵會失效變「空格」。
+#關#    - {accept: space, send: bar, when: has_menu} #按空白鍵後會空一格並上屏，原「|」鍵會失效變「空格」。
+#關#    - {accept: space, send: space, when: paging} #選單有多字並選擇時，不會跳成單字加上空格。
+#    - {accept: space, send: space, when: has_menu} #非空碼時，空白還是空白
+#    - {accept: space, send: Escape, when: composing} #空碼時，按空格清除
+
+editor:
+  bindings:
+    Return: confirm
+    Shift+Return: commit_raw_input
+
+recognizer:
+  patterns:
+#    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
+    reverse_lookup: "^=[a-z]*'?$"
+#    reverse_lookup: "^-[-.,;/0-9a-z]*?$"
