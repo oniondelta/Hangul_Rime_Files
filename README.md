@@ -12,7 +12,7 @@
 ![介紹1](https://raw.githubusercontent.com/oniondelta/hangul-rime/master/hangul2020_en-1.jpg)
 ![介紹2](https://raw.githubusercontent.com/oniondelta/hangul-rime/master/hangul2020_en-2.jpg)
 
-### 贊助 Donate：
+### 贊助 (Donate)：
 
   > 從第一個方案上傳已持續更新四年，花了族繁不及備載的心力！
 
