@@ -374,6 +374,7 @@ punctuator:
 key_binder:
   import_preset: default
   bindings:
+### 避 RIME 原設定鍵位衝突 ###
     - {accept: comma, send: comma, when: has_menu}
     - {accept: comma, send: comma, when: paging}
     - {accept: period, send: period, when: has_menu}
