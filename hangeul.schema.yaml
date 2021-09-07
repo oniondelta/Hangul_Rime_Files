@@ -45,6 +45,7 @@ menu:
 
 speller:
   alphabet: "abcdefghijklmnopqrstuvwxyz;/"
+  initials: "abcdefghijklmnopqrstuvwxyz"
   delimiter: "'"
   # algebra:
   #   - derive/^\|$/ /
