@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語2set❃
-  version: "202106"
+  version: "202109"
   author:
     - 『洋蔥』
   description: |
@@ -19,7 +19,6 @@ switches:
 
 engine:
   processors:
-    - lua_processor@endspace
     - ascii_composer
     - recognizer
     - key_binder
@@ -298,8 +297,9 @@ hangeul_phrase:
   initial_quality: "1"
 
 punctuator:
+  use_space: true
   full_shape:
-    " " : { commit: "　" }
+    # " " : { commit: "　" }
     "<" : { commit: "，" }
     ">" : { commit: "。" }
     "?" : [ ？, ／, ÷ ]
@@ -328,8 +328,8 @@ punctuator:
     "{" : [ 『, 〖, 〈, ｛ ]
     "}" : [ 』, 〗, 〉, ｝ ]
   half_shape:
+    " ": " "
     "`" : { commit: "₩" }
-#     "|" : { commit: " " }  ##會空一格並上屏，原「|」鍵會失效變「空格」。可結合key_binder空白鍵，使空白鍵能空一格上屏。
     "$" : [ "$", "₩", "＄", "¥", "￥", "€", "£", "￡", "₤", "¢", "￠", "₵", "₡", "¤", "৳", "฿", "₠", "₢", "₣", "₥", "₦", "₧", "₪", "₫", "₭", "₮", "₯", "₰", "₱", "₲", "₳", "₴", "₶", "₷", "₸", "₹", "₺", "₨", "﷼" ]
     "%" : [ "%", "％", "‰", "‱", "°", "℃", "℉", "Å", "㏃", "㏆", "㎈", "㏄", "㏅", "㎝", "㎠", "㎤", "㏈", "㎗", "㎙", "㎓", "㎬", "㏉", "㏊", "㏋", "㎐", "㏌", "㎄", "㎅", "㎉", "㎏", "㎑", "㏍", "㎘", "㎞", "㏎", "㎢", "㎦", "㎪", "㏏", "㎸", "㎾", "㏀", "㏐", "㏓", "㎧", "㎨", "㎡", "㎥", "㎃", "㏔", "㎆", "㎎", "㎒", "㏕", "㎖", "㎜", "㎟", "㎣", "㏖", "㎫", "㎳", "㎷", "㎹", "㎽", "㎿", "㏁", "㎁", "㎋", "㎚", "㎱", "㎵", "㎻", "㏘", "㎩", "㎀", "㎊", "㏗", "㏙", "㏚", "㎰", "㎴", "㎺", "㎭", "㎮", "㎯", "㏛", "㏜", "㎔", "㏝", "㎂", "㎌", "㎍", "㎕", "㎛", "㎲", "㎶", "㎼" ]
     "&" : [ "&", "＆", "＃", "＠", ⅟, ½, ↉, ⅓, ⅔, ¼, ⅕, ⅖, ⅗, ⅘, ⅙, ⅚, ⅐, ⅛, ⅜, ⅝, ⅞, ⅑, ⅒ ]
@@ -393,9 +393,9 @@ key_binder:
     - {accept: Tab, send: Shift+Left, when: paging}
     - {accept: Shift+space, send: Page_Down, when: has_menu} #選字時可用「Shift」+「空白鍵」翻頁。 
     - {accept: Shift+Tab, send: Page_Up, when: paging}
-#     - {accept: Return, send: space, when: has_menu} #return,enter直出
-#     - {accept: space, send: bar, when: has_menu} #按空白鍵後會空一格並上屏，原「|」鍵會失效變「空格」。
-#     - {accept: space, send: space, when: paging} #選單有多字並選擇時，不會跳成單字加上空格。
+    - {accept: space, send: Return, when: paging}
+    # - {accept: Return, send: space, when: composing}
+    # - {accept: Return, send: Return, when: paging}
 
 editor:
   bindings:
