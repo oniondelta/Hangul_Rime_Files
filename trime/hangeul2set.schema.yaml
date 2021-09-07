@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語2set❃
-  version: "202106"
+  version: "202109"
   author:
     - 『洋蔥』
   description: |
@@ -21,7 +21,6 @@ switches:
 
 engine:
   processors:
-    - lua_processor@endspace
     - ascii_composer
     - recognizer
     - key_binder
@@ -38,10 +37,9 @@ engine:
     - punct_segmentor
     - fallback_segmentor
   translators:
-    - script_translator
     - punct_translator
+    - script_translator
     - table_translator@hangeul_phrase
-    - reverse_lookup_translator
 
 menu:
   alternative_select_keys: "1234567890"
@@ -49,7 +47,7 @@ menu:
 
 speller:
   alphabet: "abcdefghijklmnopqrstuvwxyz;QWERTOP"
-  delimiter: " "
+  delimiter: "'"
   algebra:
     - xform/mqo/QO/
     - xform/mqp/QP/
@@ -84,10 +82,10 @@ translator:
   enable_completion: false
   preedit_format:
 #    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
-    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP |ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|" #･
+    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP'|ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|" #･
   comment_format:
 #    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
-    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP |ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|"
+    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP'|ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|"
 #  disable_user_dict_for_patterns:
 #    - ^[a-z;]{1}$
 #    - ^[a-z;]{2}$
@@ -103,8 +101,9 @@ hangeul_phrase:
 
 
 punctuator:
+  use_space: true
   full_shape:
-    " " : { commit: "　" }
+    # " " : { commit: "　" }
     "<" : { commit: "，" }
     ">" : { commit: "。" }
     "?" : [ ？, ／, ÷ ]
@@ -133,10 +132,8 @@ punctuator:
     "{" : [ 『, 〖, 〈, ｛ ]
     "}" : [ 』, 〗, 〉, ｝ ]
   half_shape:
+    " ": " "
     "`" : { commit: "₩" }
-#關#    "|" : { commit: " " }  ##會空一格並上屏，原「|」鍵會失效變「空格」。可結合key_binder空白鍵，使空白鍵能空一格上屏。
-#    "`" : { commit: " " }  ##會空一格並上屏，原「`」鍵會失效變「空格」。可結合key_binder空白鍵，使空白鍵能空一格上屏。
-#    "/" : { commit: " " }  ##會空一格並上屏，原「/」鍵會失效變「空格」。可結合key_binder空白鍵，使空白鍵能空一格上屏。
     "$" : [ "$", "₩", "＄", "¥", "￥", "€", "£", "￡", "₤", "¢", "￠", "₵", "₡", "¤", "৳", "฿", "₠", "₢", "₣", "₥", "₦", "₧", "₪", "₫", "₭", "₮", "₯", "₰", "₱", "₲", "₳", "₴", "₶", "₷", "₸", "₹", "₺", "₨", "﷼" ]
     "%" : [ "%", "％", "‰", "‱", "°", "℃", "℉", "Å", "㏃", "㏆", "㎈", "㏄", "㏅", "㎝", "㎠", "㎤", "㏈", "㎗", "㎙", "㎓", "㎬", "㏉", "㏊", "㏋", "㎐", "㏌", "㎄", "㎅", "㎉", "㎏", "㎑", "㏍", "㎘", "㎞", "㏎", "㎢", "㎦", "㎪", "㏏", "㎸", "㎾", "㏀", "㏐", "㏓", "㎧", "㎨", "㎡", "㎥", "㎃", "㏔", "㎆", "㎎", "㎒", "㏕", "㎖", "㎜", "㎟", "㎣", "㏖", "㎫", "㎳", "㎷", "㎹", "㎽", "㎿", "㏁", "㎁", "㎋", "㎚", "㎱", "㎵", "㎻", "㏘", "㎩", "㎀", "㎊", "㏗", "㏙", "㏚", "㎰", "㎴", "㎺", "㎭", "㎮", "㎯", "㏛", "㏜", "㎔", "㏝", "㎂", "㎌", "㎍", "㎕", "㎛", "㎲", "㎶", "㎼" ]
     "&" : [ "&", "＆", "＃", "＠", ⅟, ½, ↉, ⅓, ⅔, ¼, ⅕, ⅖, ⅗, ⅘, ⅙, ⅚, ⅐, ⅛, ⅜, ⅝, ⅞, ⅑, ⅒ ]
@@ -193,13 +190,14 @@ key_binder:
 #    - {accept: Shift+space, send: Page_Down, when: has_menu} #選字時可用「Shift」+「空白鍵」翻頁。 #send: Right #send: Down
 #    - {accept: Shift+Tab, send: Page_Up, when: paging} #選字時可用「Shift」+「tab」翻頁。
 ######################
+    - {accept: space, send: Return, when: paging}
+    # - {accept: Return, send: space, when: composing}
+    # - {accept: Return, send: Return, when: paging}
+######################
 #    - {accept: Return, send: grave, when: has_menu}
 #    - {accept: Return, send: space, when: paging}
 #關#    - {accept: Return, send: space, when: has_menu} #return,enter直出
 ######################
-#    - {accept: space, send: grave, when: has_menu} #按空白鍵後會空一格並上屏，原「`」鍵會失效變「空格」。
-#關#    - {accept: space, send: bar, when: has_menu} #按空白鍵後會空一格並上屏，原「|」鍵會失效變「空格」。
-#關#    - {accept: space, send: space, when: paging} #選單有多字並選擇時，不會跳成單字加上空格。
 #    - {accept: space, send: Escape, when: composing} #空碼時，按空格清除
 #    - {accept: space, send: space, when: has_menu} #非空碼時，空白還是空白
 
@@ -214,5 +212,3 @@ recognizer:
 #    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
     # url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
-    # reverse_lookup: "^=[a-z]*'?$"
-#    reverse_lookup: "^-[-.,;/0-9a-z]*?$"
