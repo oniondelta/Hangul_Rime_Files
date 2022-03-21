@@ -10,6 +10,7 @@ schema:
   description: |
     韓文HNC
   dependencies:
+    # - cangjie5
 
 
 switches:
