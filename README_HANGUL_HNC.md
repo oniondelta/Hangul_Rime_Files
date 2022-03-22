@@ -27,5 +27,5 @@
 
 #### 雙子音：
 ```
-ㄲ gg	 ㄸ dd  ㅃ bb	ㅆ ss  ㅉ jj
+ㄲ gg	 ㄸ dd   ㅃ bb	ㅆ ss   ㅉ jj
 ```
