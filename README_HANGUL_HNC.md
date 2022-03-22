@@ -9,11 +9,11 @@
 
 #### 雙母音：
 ```
-ㅐ ai	     ㅔ ei
-ㅒ yai(iai)  ㅖ yei(iei)
-ㅘ oa	     ㅙ oai	 ㅚ oi
-ㅝ uo	     ㅞ uei	 ㅟ ui
-                         ㅢ wi
+ㅐ ai	     ㅔ ei(ey)
+ㅒ yai(iai)   ㅖ yei(iei/iey)
+ㅘ oa	     ㅙ oai(oay)	 ㅚ oi(oy)
+ㅝ uo	     ㅞ uei(uey)	 ㅟ ui(uy)
+                         ㅢ wi(wy)
 ```
 
 #### 單子音：
