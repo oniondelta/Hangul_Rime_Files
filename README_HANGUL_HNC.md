@@ -12,7 +12,7 @@
 ㅐ ai(ay)     ㅔ ei(ey)
 ㅒ yai(iai)  ㅖ yei(iei/iey/yey)
 ㅘ oa	     ㅙ oai(oay)	    ㅚ oi(oy)
-ㅝ uo	     ㅞ uei(uey)	    ㅟ ui(uy)
+ㅝ ue	     ㅞ uei(uey)	    ㅟ ui(uy)
                             ㅢ wi(wy)
 ```
 
