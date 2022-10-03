@@ -1,0 +1,334 @@
+# Rime schema settings
+# encoding: utf-8
+# 《韓語標準鍵位(2-set)（零選單）設定頁》
+schema:
+  schema_id: hangeul2set_zeromenu # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
+  name: "❃韓語2set❃（零選單）"
+  version: "202210"
+  author:
+    - 『洋蔥』
+  description: |
+    韓文零選單
+  dependencies:
+
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ "韓文", "英文" ]
+  - name: full_shape
+    states: [ "半形", "全形" ]
+
+engine:
+  processors:
+    - lua_processor@kr_2set_0m
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    # - express_editor
+    - fluency_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator@hangeul_phrase
+    - script_translator
+
+menu:
+  alternative_select_keys: "1234567890"
+  page_size: 10
+
+speller:
+  alphabet: "abcdefghijklmnopqrstuvwxyz;QWERTOP"
+  delimiter: "'"
+  algebra:
+    - xform/mqo/QO/
+    - xform/mqp/QP/
+    - xform/mwo/WO/
+    - xform/mwp/WP/
+    - xform/meo/EO/
+    - xform/mep/EP/
+    - xform/mro/RO/
+    - xform/mrp/RP/
+    - xform/mto/TO/
+    - xform/mtp/TP/
+    - xform/qq/Q/
+    - xform/ww/W/
+    - xform/ee/E/
+    - xform/rr/R/
+    - xform/tt/T/
+    - xform/oo/O/
+    - xform/pp/P/
+    - derive/^Q/qq/
+    - derive/^W/ww/
+    - derive/^E/ee/
+    - derive/^R/rr/
+    - derive/^T/tt/
+
+translator:
+  dictionary: hangeul2set
+  prism: hangeul2set_zeromenu
+  enable_user_dict: true
+  enable_sentence: false
+  enable_completion: false
+  preedit_format:
+    # - xform/pp/P/ #此條目只有反查 comment 會用到，preedit不會用到，因以下有引用，故添加。
+
+    # - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP'|ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|" #･
+
+    - xform/ㄹㅎ/\ᆶ/
+    - xform/ㄹㅂ/\ᆲ/
+    - xform/ㄹㅌ/\ᆴ/
+    - xform/ㄹㅍ/\ᆵ/
+    - xform/ㄹㅅ/\ᆳ/
+    - xform/ㄹㄱ/\ᆰ/
+    - xform/ㄹㅁ/\ᆱ/
+    - xform/ㄴㅎ/\ᆭ/
+    - xform/ㄴㅈ/\ᆬ/
+    - xform/ㅂㅅ/\ᆹ/
+    - xform/ㄱㅅ/\ᆪ/
+
+    - xform/ㅗㅏ/\ᅪ/
+    - xform/ㅗㅐ/\ᅫ/
+    - xform/ㅗㅣ/\ᅬ/
+    - xform/ㅜㅓ/\ᅯ/
+    - xform/ㅜㅣ/\ᅱ/
+    - xform/ㅜㅔ/\ᅰ/
+    - xform/ㅡㅣ/\ᅴ/
+
+    - xform/ㅃ([^·;])([^·;])?/\ᄈ$1$2/
+    - xform/ㅂㅂ([^·;])([^·;])?/\ᄈ$1$2/
+    - xform/ㅂㅂ/ㅃ/
+    - xform/ㅉ([^·;])([^·;])?/\ᄍ$1$2/
+    - xform/ㅈㅈ([^·;])([^·;])?/\ᄍ$1$2/
+    - xform/ㅈㅈ/ㅉ/
+    - xform/ㄸ([^·;])([^·;])?/\ᄄ$1$2/
+    - xform/ㄷㄷ([^·;])([^·;])?/\ᄄ$1$2/
+    - xform/ㄷㄷ/ㄸ/
+
+    - xform/ㄲ([^·;])([^·;])?/\ᄁ$1$2/
+    - xform/ㄱㄱ([^·;])([^·;])?/\ᄁ$1$2/
+    - xform/([^·;])ㄲ/$1\ᆩ/
+    - xform/([^·;])ㄱㄱ/$1\ᆩ/
+    - xform/ㄱㄱ/ㄲ/
+    - xform/ㅆ([^·;])([^·;])?/\ᄊ$1$2/
+    - xform/ㅅㅅ([^·;])([^·;])?/\ᄊ$1$2/
+    - xform/([^·;])ㅆ/$1\ᆻ/
+    - xform/([^·;])ㅅㅅ/$1\ᆻ/
+    - xform/ㅅㅅ/ㅆ/
+
+    - xform/ㅁ([^·;])([^·;])?/\ᄆ$1$2/
+    - xform/([^·;])ㅁ/$1\ᆷ/
+    - xform/^ㅁ([^·;])/\ᄆ$1/
+    - xform/ㅊ([^·;])([^·;])?/\ᄎ$1$2/
+    - xform/([^·;])ㅊ/$1\ᆾ/
+    - xform/^ㅊ([^·;])/\ᄎ$1/
+    - xform/ㅇ([^·;])([^·;])?/\ᄋ$1$2/
+    - xform/([^·;])ㅇ/$1\ᆼ/
+    - xform/^ㅇ([^·;])/\ᄋ$1/
+    - xform/ㄷ([^·;])([^·;])?/\ᄃ$1$2/
+    - xform/([^·;])ㄷ/$1\ᆮ/
+    - xform/^ㄷ([^·;])/\ᄃ$1/
+    - xform/ㄹ([^·;])([^·;])?/\ᄅ$1$2/
+    - xform/([^·;])ㄹ/$1\ᆯ/
+    - xform/^ㄹ([^·;])/\ᄅ$1/
+    - xform/ㅎ([^·;])([^·;])?/\ᄒ$1$2/
+    - xform/([^·;])ㅎ/$1\ᇂ/
+    - xform/^ㅎ([^·;])/\ᄒ$1/
+    - xform/ㅂ([^·;])([^·;])?/\ᄇ$1$2/
+    - xform/([^·;])ㅂ/$1\ᆸ/
+    - xform/^ㅂ([^·;])/\ᄇ$1/
+    - xform/ㄱ([^·;])([^·;])?/\ᄀ$1$2/
+    - xform/([^·;])ㄱ/$1\ᆨ/
+    - xform/^ㄱ([^·;])/\ᄀ$1/
+    - xform/ㄴ([^·;])([^·;])?/\ᄂ$1$2/
+    - xform/([^·;])ㄴ/$1\ᆫ/
+    - xform/^ㄴ([^·;])/\ᄂ$1/
+    - xform/ㅅ([^·;])([^·;])?/\ᄉ$1$2/
+    - xform/([^·;])ㅅ/$1\ᆺ/
+    - xform/^ㅅ([^·;])/\ᄉ$1/
+    - xform/ㅍ([^·;])([^·;])?/\ᄑ$1$2/
+    - xform/([^·;])ㅍ/$1\ᇁ/
+    - xform/^ㅍ([^·;])/\ᄑ$1/
+    - xform/ㅈ([^·;])([^·;])?/\ᄌ$1$2/
+    - xform/([^·;])ㅈ/$1\ᆽ/
+    - xform/^ㅈ([^·;])/\ᄌ$1/
+    - xform/ㅌ([^·;])([^·;])?/\ᄐ$1$2/
+    - xform/([^·;])ㅌ/$1\ᇀ/
+    - xform/^ㅌ([^·;])/\ᄐ$1/
+    - xform/ㅋ([^·;])([^·;])?/\ᄏ$1$2/
+    - xform/([^·;])ㅋ/$1\ᆿ/
+    - xform/^ㅋ([^·;])/\ᄏ$1/
+
+    - xform/([^·;])ㅠ/$1\ᅲ/
+    - xform/([^·;])ㅗ/$1\ᅩ/
+    - xform/([^·;])ㅑ/$1\ᅣ/
+    - xform/([^·;])ㅓ/$1\ᅥ/
+    - xform/([^·;])ㅏ/$1\ᅡ/
+    - xform/([^·;])ㅣ/$1\ᅵ/
+    - xform/([^·;])ㅡ/$1\ᅳ/
+    - xform/([^·;])ㅜ/$1\ᅮ/
+    - xform/([^·;])ㅐ/$1\ᅢ/
+    - xform/([^·;])ㅔ/$1\ᅦ/
+    - xform/([^·;])ㅕ/$1\ᅧ/
+    - xform/([^·;])ㅛ/$1\ᅭ/
+    - xform/([^·;])ㅒ/$1\ᅤ/
+    - xform/([^·;])ㅖ/$1\ᅨ/
+
+    - "xlit|·| |"
+
+hangeul_phrase:
+  dictionary: ""
+  user_dict: hangeul2set_phrase
+  db_class: stabledb #tabledb
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: "1"
+
+punctuator:
+  # use_space: true
+  full_shape:
+    # " " : { commit: "　" }
+    "<" : { commit: "，" }
+    ">" : { commit: "。" }
+    "?" : [ ？, ／, ÷ ]
+    ":" : [ ：, ； ]
+    "'" : { pair: [ "‘", "’" ] }
+    "\"" : { pair: [ "“", "”" ] }
+    "\\" : [ 、, ＼ ]
+    "|" : [ ·, ｜, "§", "¦" ]
+    "`" : ｀
+    "~" : ～
+    "!" : { commit: ！ }
+    "@" : [ ＠, ☯ ]
+    "#" : [ ＃, ⌘ ]
+    "%" : [ ％, "°", "℃" ]
+    "$" : [ ￥, "$", "€", "£", "¥", "¢", "¤" ]
+    "^" : { commit: …… }
+    "&" : ＆
+    "*" : [ ＊, ·, ・, ×, ※, ❂ ]
+    "(" : （
+    ")" : ）
+    "_" : [ ——, － ]
+    "+" : ＋
+    "=" : ＝
+    "[" : [ 「, 【, 《, 〔, ［ ]
+    "]" : [ 」, 】, 》, 〕, ］ ]
+    "{" : [ 『, 〖, 〈, ｛ ]
+    "}" : [ 』, 〗, 〉, ｝ ]
+  half_shape:
+    # " ": " "
+    "`" : { commit: "₩" }
+    "$" : [ "$", "₩", "＄", "¥", "￥", "€", "£", "￡", "₤", "¢", "￠", "₵", "₡", "¤", "৳", "฿", "₠", "₢", "₣", "₥", "₦", "₧", "₪", "₫", "₭", "₮", "₯", "₰", "₱", "₲", "₳", "₴", "₶", "₷", "₸", "₹", "₺", "₨", "﷼" ]
+    "%" : [ "%", "％", "‰", "‱", "°", "℃", "℉", "Å", "㏃", "㏆", "㎈", "㏄", "㏅", "㎝", "㎠", "㎤", "㏈", "㎗", "㎙", "㎓", "㎬", "㏉", "㏊", "㏋", "㎐", "㏌", "㎄", "㎅", "㎉", "㎏", "㎑", "㏍", "㎘", "㎞", "㏎", "㎢", "㎦", "㎪", "㏏", "㎸", "㎾", "㏀", "㏐", "㏓", "㎧", "㎨", "㎡", "㎥", "㎃", "㏔", "㎆", "㎎", "㎒", "㏕", "㎖", "㎜", "㎟", "㎣", "㏖", "㎫", "㎳", "㎷", "㎹", "㎽", "㎿", "㏁", "㎁", "㎋", "㎚", "㎱", "㎵", "㎻", "㏘", "㎩", "㎀", "㎊", "㏗", "㏙", "㏚", "㎰", "㎴", "㎺", "㎭", "㎮", "㎯", "㏛", "㏜", "㎔", "㏝", "㎂", "㎌", "㎍", "㎕", "㎛", "㎲", "㎶", "㎼" ]
+    "&" : [ "&", "＆", "＃", "＠", ⅟, ½, ↉, ⅓, ⅔, ¼, ¾, ⅕, ⅖, ⅗, ⅘, ⅙, ⅚, ⅐, ⅛, ⅜, ⅝, ⅞, ⅑, ⅒ ]
+    "*" : [ "*", ＊, "﹡", ※, ❂, ★, ☆, ✡, ❋, ❊, ❉, ❈, ❇, ❆, ❅, ❄, ❃, ❁, ❀, ✿, ✾, ✽, ✼, ✻, ✺, ✹, ✸, ✷, ✶, ✵, ✴, ✳, ✲, ✱, ✰, ✯, ✮, ✭, ✬, ✫, ✪, ✩, ✧, ✦, ✥, ✤, ✣, ✢, ⛤, ⛥, ⛦, ⛧ ]
+    "^" : [ "^", "+", "-", "×", "÷", "±", "=", "≠", "＝", "＋", "－", "＜", "＞", "∈", "∏", "∑", "≮", "≯", "∕", "√", "∝", "∞", ∟, ∠, ∥, ∧, ∨, ∩, ∪, ∫, ∮, ∴, ∵, ∷, ∽, ≈, ≌, ≒, ≡, ≤, ≥, ≦, ≧, ⊕, ⊙, ⊥, ⊿, ㏑, ㏒ ]
+    "=" : { commit: "=" }
+    "-" : { commit: "-" }
+    "," : { commit: "," }
+    "." : { commit: "." }
+    ";" : [ ";", "…", "·", "`", "'", "\"" ]
+    "'" : { pair: [ "‘", "’" ] }
+    "\"" : { pair: [ "“", "”" ] }
+#############################
+    "A" : { commit: "ㅁ" }
+    "B" : { commit: "ㅠ" }
+    "C" : { commit: "ㅊ" }
+    "D" : { commit: "ㅇ" }
+#    "E" : { commit: "ㄸ" }
+    "F" : { commit: "ㄹ" }
+    "G" : { commit: "ㅎ" }
+    "H" : { commit: "ㅗ" }
+    "I" : { commit: "ㅑ" }
+    "J" : { commit: "ㅓ" }
+    "K" : { commit: "ㅏ" }
+    "L" : { commit: "ㅣ" }
+    "M" : { commit: "ㅡ" }
+    "N" : { commit: "ㅜ" }
+#    "O" : { commit: "ㅒ" }
+#    "P" : { commit: "ㅖ" }
+#    "Q" : { commit: "ㅃ" }
+#    "R" : { commit: "ㄲ" }
+    "S" : { commit: "ㄴ" }
+#    "T" : { commit: "ㅆ" }
+    "U" : { commit: "ㅕ" }
+    "V" : { commit: "ㅍ" }
+#    "W" : { commit: "ㅉ" }
+    "X" : { commit: "ㅌ" }
+    "Y" : { commit: "ㅛ" }
+    "Z" : { commit: "ㅋ" }
+##### 讓 fluency_editor 時也可直上屏#####
+    "~" : { commit: "~" }
+    "!" : { commit: "!" }
+    "@" : { commit: "@" }
+    "#" : { commit: "#" }
+    "(" : { commit: "(" }
+    ")" : { commit: ")" }
+    ":" : { commit: ":" }
+    "_" : { commit: "_" }
+    "+" : { commit: "+" }
+    "[" : { commit: "[" }
+    "]" : { commit: "]" }
+    "{" : { commit: "{" }
+    "}" : { commit: "}" }
+    "|" : { commit: "|" }
+    "\\" : { commit: "\\" }
+    "<" : { commit: "<" }
+    ">" : { commit: ">" }
+    "/" : { commit: "/" }
+    "?" : { commit: "?" }
+#############################
+
+key_binder:
+  import_preset: default
+  bindings:
+### 避 RIME 原設定鍵位衝突 ###
+    - {accept: comma, send: comma, when: has_menu}
+    - {accept: comma, send: comma, when: paging}
+    - {accept: period, send: period, when: has_menu}
+    - {accept: period, send: period, when: paging}
+    - {accept: minus, send: minus, when: has_menu}
+    - {accept: minus, send: minus, when: paging}
+    - {accept: equal, send: equal, when: has_menu}
+    - {accept: equal, send: equal, when: paging}
+###
+    - {accept: Up, send: KP_Left, when: composing} #左移一個注音
+    - {accept: Up, send: Up, when: paging} #修正上條目出現的bug
+    - {accept: Right, send: Shift+Right, when: composing} #右移一整個字
+    - {accept: Shift+Right, send: Right, when: composing} #右移一個注音
+    - {accept: Shift+Left, send: KP_Left, when: composing} #左移一個注音
+    - {accept: Left, send: Page_Up, when: paging}
+    - {accept: Right, send: Page_Down, when: paging}
+    - {accept: Tab, send: Shift+Left, when: paging} #Shift+Right #composing
+    - {accept: Shift+space, send: Page_Down, when: has_menu} #選字時可用「Shift」+「空白鍵」翻頁。 #send: Right #send: Down
+    - {accept: Shift+Tab, send: Page_Up, when: paging} #選字時可用「Shift」+「tab」翻頁。
+    - {accept: space, send: Return, when: paging}
+    # - {accept: Return, send: space, when: composing}
+    # - {accept: Return, send: Return, when: paging}
+    - {accept: BackSpace, send: Shift+BackSpace, when: always}
+    - {accept: Shift+BackSpace, send: BackSpace, when: always}
+
+editor:
+  bindings:
+    Return: confirm
+    KP_Enter: confirm
+    # Shift+Return: commit_raw_input  #失效，改用 lua 處理
+
+recognizer:
+  patterns:
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$"  #|^[a-z]+[.].+$
+
+
+style:
+  inline_preedit: true
