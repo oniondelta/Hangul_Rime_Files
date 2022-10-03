@@ -315,8 +315,8 @@ key_binder:
     - {accept: space, send: Return, when: paging}
     # - {accept: Return, send: space, when: composing}
     # - {accept: Return, send: Return, when: paging}
-    - {accept: BackSpace, send: Shift+BackSpace, when: always}
-    - {accept: Shift+BackSpace, send: BackSpace, when: always}
+    - {accept: BackSpace, send: Shift+BackSpace, when: composing}
+    - {accept: Shift+BackSpace, send: BackSpace, when: composing}
 
 editor:
   bindings:
