@@ -22,13 +22,21 @@ local function kr_2set_0m(key,env)
     return 2
 
   --- pass reverse_lookup prefix （使反查鍵可展示全部選項）
-  elseif string.find(context.input, '=[a-z]*$') then
+  elseif string.find(context.input, '=[a-z]?[a-z]?[a-z]?[a-z]?[a-z]?$') then
     return 2
 
   --- 修正「Shift+Return」commit_raw_input 設定失效問題
   elseif key:eq(KeyEvent("Shift+Return")) and (context:is_composing()) then
     engine:commit_text(context.input)
     context:clear()
+    return 1
+
+  --- 修正組字時，按「向下」鍵輸入消失問題
+  elseif key:eq(KeyEvent("Down")) and (context:is_composing()) and (not context:has_menu()) and string.find(context.input, '[^0-9]$') then
+    context:reopen_previous_segment()
+    -- context:confirm_current_selection()
+    -- key:repr('Release+Right')
+    -- engine:process_key("Right")  #輸入法會崩潰
     return 1
 
   --- 《最主要部分》使 [a-zQWERTOP] 組字且半上屏
@@ -45,10 +53,16 @@ local function kr_2set_0m(key,env)
     context.input = context.input .. ';'
     return 1
 
-  --- 修正「數字」不能直接上屏問題
+  --- 修正開頭輸入「數字」，不能直接上屏問題
   elseif set_number[key:repr()] and (not context:is_composing()) then
     engine:commit_text(key:repr())
     -- context:clear()
+    return 1
+
+  --- 修正輸入途中插入「數字」，無法半上屏，需按2次 enter
+  elseif set_number[key:repr()] and (context:is_composing()) and (not context:has_menu()) then
+    context.input = context.input .. key:repr()
+    context:confirm_current_selection()
     return 1
 
   end

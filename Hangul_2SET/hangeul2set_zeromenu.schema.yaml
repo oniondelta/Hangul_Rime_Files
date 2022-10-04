@@ -317,6 +317,9 @@ key_binder:
     # - {accept: Return, send: Return, when: paging}
     - {accept: BackSpace, send: Shift+BackSpace, when: composing}
     - {accept: Shift+BackSpace, send: BackSpace, when: composing}
+    - {accept: Down, send: Right, when: composing}
+    - {accept: Down, send: Down, when: has_menu}
+    - {accept: Down, send: Down, when: paging}
 
 editor:
   bindings:

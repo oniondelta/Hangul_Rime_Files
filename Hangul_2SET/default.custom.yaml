@@ -1,0 +1,13 @@
+# default.custom.yaml
+# save it to: 
+#   ~/.config/ibus/rime  (linux)
+#   ~/Library/Rime       (macos)
+#   %APPDATA%\Rime       (windows)
+
+patch:
+  schema_list:
+    # - schema: hangeul
+    - schema: hangeul2set_zeromenu
+    - schema: hangeul2set
+    # - schema: hangeul_hnc
+

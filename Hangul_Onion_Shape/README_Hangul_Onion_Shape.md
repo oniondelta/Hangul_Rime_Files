@@ -1,17 +1,16 @@
-# Hangul_Rime_Files（韓文方案）
+# Hangul_Rime_Files（洋蔥韓文形碼方案）
 
 #### ※ 請勿使用於商業營利相關行為
 #### ※ Commercial use is prohibited
 
-## 內含三個不同鍵位的韓文方案
+## 部落格方案連結 (Blog)：
+- http://deltazone.pixnet.net/blog/post/341170670
 
-- 2SET（最大眾，左右按手感好）
+## 解說 (Description)：
+- http://deltazone.pixnet.net/blog/post/264243364
 
-- HNC（音碼中較短碼之鍵位）
-
-- Onion_Shape（洋蔥形碼鍵位）
-
-
+![介紹1](https://raw.githubusercontent.com/oniondelta/hangul-rime/master/hangul2020_en-1.jpg)
+![介紹2](https://raw.githubusercontent.com/oniondelta/hangul-rime/master/hangul2020_en-2.jpg)
 
 ## 贊助 (Donate)：
 
