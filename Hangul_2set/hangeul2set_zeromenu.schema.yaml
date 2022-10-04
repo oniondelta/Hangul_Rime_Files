@@ -330,8 +330,9 @@ key_binder:
 
 editor:
   bindings:
-    Return: confirm
-    KP_Enter: confirm
+    space: commit_composition
+    Return: commit_composition
+    KP_Enter: commit_composition
     # Shift+Return: commit_raw_input  #失效，改用 lua 處理
 
 recognizer:
