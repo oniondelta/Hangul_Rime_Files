@@ -12,6 +12,8 @@ local set_number = Set {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
 local function kr_2set_0m(key,env)
   local engine = env.engine
   local context = engine.context
+  local hangul = context:get_commit_text()
+  -- local caret_pos = context.caret_pos
 
   --- pass ascii_mode
   if context:get_option('ascii_mode') then
@@ -59,12 +61,21 @@ local function kr_2set_0m(key,env)
     -- context:clear()
     return 1
 
-  --- 修正輸入途中插入「數字」，無法半上屏，需按2次 enter
+  --- 修正輸入途中插入「數字」，無法半上屏，需按2次 enter 之問題
   elseif set_number[key:repr()] and (context:is_composing()) and (not context:has_menu()) then
     context.input = context.input .. key:repr()
     context:confirm_current_selection()
     return 1
 
+  --- 增加一般韓文輸入法操作，空格上屏自動末端空一格。
+  elseif context:get_option('space_mode') then
+    if key:repr() == 'space' and (context:is_composing()) and (not context:has_menu()) and string.find(context.input, '^[a-zQWERTOP]+$') then  --只有韓文，不含漢字。如果漢字如此出字會不能記憶。
+    -- if key:repr() == 'space' and (context:is_composing()) and (not context:has_menu()) then
+    -- if key:repr() == 'space' and (context:is_composing()) and (not context:has_menu()) and (not string.find(hangul, "[%a%c%s]")) and (caret_pos == context.input:len()) then
+      engine:commit_text(hangul .. " ")
+      context:clear()
+      return 1
+    end
   end
   return 2
 end
