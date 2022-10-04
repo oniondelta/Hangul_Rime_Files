@@ -18,9 +18,12 @@ switches:
     states: [ "韓文", "英文" ]
   - name: full_shape
     states: [ "半形", "全形" ]
+  - name: ascii_punct
+    reset: 0
+    states: [ "。，", "．，" ]
   - name: space_mode
     reset: 1
-    states: [ "無", "空格" ]
+    states: [ "普通", "空格" ]
 
 engine:
   processors:
@@ -323,6 +326,7 @@ key_binder:
     - {accept: Down, send: Right, when: composing}
     - {accept: Down, send: Down, when: has_menu}
     - {accept: Down, send: Down, when: paging}
+    - {accept: Control+semicolon, toggle: space_mode, when: always}
 
 editor:
   bindings:

@@ -5,11 +5,25 @@
 
 ## 內含三種不同鍵位的韓文方案
 
-- Hangul_2SET（最大眾，左右按手感好）
+- Hangul_2SET
 
-- Hangul_HNC（音碼中較短碼之鍵位）
+> 最大眾，左右手輪流按，手感好
+
+> 需使用 Shift + [QWEROP] 鍵位
+
+- Hangul_HNC
+
+> 在韓文音碼中，有較短碼之優勢
 
 - Hangul_Onion_Shape（洋蔥形碼鍵位）
+
+> 使用簡速字根，每字 2～3 碼，碼長最短
+
+> 前後韓文字切分關係，雖已用詞典去校正避免，但有時還是得選字
+
+## 備註
+
+- 使用 Hangul_2SET 和 Hangul_HNC 方案，請把「lua」資料夾和「rime.lua」放入「用戶設定（rime）」資料夾中
 
 
 
