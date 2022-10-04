@@ -3,13 +3,13 @@
 #### ※ 請勿使用於商業營利相關行為
 #### ※ Commercial use is prohibited
 
-## 內含三個不同鍵位的韓文方案
+## 內含三種不同鍵位的韓文方案
 
-- 2SET（最大眾，左右按手感好）
+- Hangul_2SET（最大眾，左右按手感好）
 
-- HNC（音碼中較短碼之鍵位）
+- Hangul_HNC（音碼中較短碼之鍵位）
 
-- Onion_Shape（洋蔥形碼鍵位）
+- Hangul_Onion_Shape（洋蔥形碼鍵位）
 
 
 
