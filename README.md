@@ -3,28 +3,28 @@
 #### ※ 請勿使用於商業營利相關行為
 #### ※ Commercial use is prohibited
 
-## 內含三種不同鍵位的韓文方案
+## 內含三種不同韓文鍵位方案
 
-- Hangul_2SET
+- Hangul_2set
 
-  > 最流行，左右手輪流按，手感好
+  > 最流行，左右手輪流按，手感佳
 
-  > 需使用 Shift + [QWEROP] 鍵位
+  > 有 Shift + [QWEROP] 鍵位，需習慣
 
 - Hangul_HNC
 
-  > 在韓文音碼中，有較短碼之優勢
+  > 在韓文各種音碼鍵位中，有較短碼之優勢
 
-- Hangul_Onion_Shape（洋蔥形碼鍵位）
+- Hangul_Onion_Shape（自創洋蔥形碼鍵位）
 
   > 使用簡速字根，每字只要 2～3 碼，碼長最短
 
-  > 前後韓文字切分關係，雖已用詞典去校正避免，但有時還是得選字
+  > 前後韓文字會有切分變數，雖已用詞典去校正避免，但有時還是得選字
+
 
 ## 備註
 
-使用 Hangul_2SET 和 Hangul_HNC 方案，請把「lua」資料夾和「rime.lua」放入「用戶設定（rime）」資料夾中
-
+使用 Hangul_2set 和 Hangul_HNC 方案，請把「lua」資料夾和「rime.lua」放入「用戶設定（rime）」資料夾中
 
 
 ## 贊助 (Donate)：
