@@ -24,7 +24,7 @@
 
 ## 備註
 
-使用 Hangul_2set 和 Hangul_HNC 方案，請把「lua」資料夾和「rime.lua」放入「用戶設定（rime）」資料夾中
+使用 Hangul_2set 和 Hangul_HNC 方案，請把「lua」資料夾和「rime.lua」放入「用戶設定(Rime)」資料夾中
 
 
 ## 贊助 (Donate)：
