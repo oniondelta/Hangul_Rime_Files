@@ -1,4 +1,4 @@
-# Hangul HNC 鍵位說明
+# Hangul HNC 鍵位
 
 #### 單母音：
 |              |             |              |             |
