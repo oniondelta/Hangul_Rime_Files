@@ -21,13 +21,16 @@ switches:
   - name: ascii_punct
     reset: 0
     states: [ "。，", "．，" ]
+  - name: kr_0m
+    reset: 1
+    states: [ "展開", "隱藏" ]
   - name: space_mode
     reset: 1
     states: [ "普通", "空格" ]
 
 engine:
   processors:
-    - lua_processor@kr_2set_0m
+    - lua_processor@kr_2set_0m_choice
     - ascii_composer
     - recognizer
     - key_binder
