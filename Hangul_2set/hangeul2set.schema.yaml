@@ -48,7 +48,7 @@ menu:
 
 speller:
   alphabet: "abcdefghijklmnopqrstuvwxyz;QWERTOP"
-  delimiter: "'"
+  delimiter: "\\"
   algebra:
     - xform/mqo/QO/
     - xform/mqp/QP/
@@ -83,7 +83,9 @@ translator:
     # - xform/pp/P/
 
     # - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
-    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP'|ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|"
+    # - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP'|ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|"
+    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP|ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ|"
+    - xform/\\/·/
 
     - xform/ㄹㅎ/\ᆶ/
     - xform/ㄹㅂ/\ᆲ/
