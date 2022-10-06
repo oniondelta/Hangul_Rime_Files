@@ -57,7 +57,7 @@ menu:
 
 speller:
   alphabet: "abcdefghijklmnopqrstuvwxyz;QWERTOP"
-  delimiter: "'"
+  delimiter: "\\"
   algebra:
     - xform/mqo/QO/
     - xform/mqp/QP/
@@ -92,7 +92,9 @@ translator:
     # - xform/pp/P/ #此條目只有反查 comment 會用到，preedit不會用到，因以下有引用，故添加。
 
     # - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
-    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP'|ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|" #･
+    # - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP'|ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|" #･
+    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP|ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ|" #･
+    - xform/\\/·/
 
     - xform/ㄹㅎ/\ᆶ/
     - xform/ㄹㅂ/\ᆲ/
