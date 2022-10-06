@@ -9,6 +9,8 @@ schema:
     - 『洋蔥』
   description: |
     韓文形碼
+  dependencies:
+    - cangjie5
 
 switches:
   - name: ascii_mode
@@ -37,6 +39,7 @@ engine:
   translators:
     - punct_translator
     - table_translator@hangeul_phrase
+    - reverse_lookup_translator
     - script_translator
 
 menu:
@@ -70,6 +73,16 @@ hangeul_phrase:
   enable_sentence: false
   initial_quality: "0"
 
+reverse_lookup:
+  dictionary: cangjie5
+  enable_completion: false
+  prefix: "="
+  suffix: "'"
+  tips: 〔漢字反查〕
+  preedit_format:
+    # - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+    - "xlit|abcdefghijklmnopqrstuvwxyz|日月金木水火土竹戈十大中一弓人心手口尸廿山女田難卜符|"
+
 punctuator:
   use_space: true
   full_shape:
@@ -96,7 +109,7 @@ punctuator:
     ")" : ）
     "_" : [ ——, － ]
     "+" : ＋
-    "=" : ＝
+    # "=" : ＝
     "[" : [ 「, 【, 《, 〔, ［ ]
     "]" : [ 」, 】, 》, 〕, ］ ]
     "{" : [ 『, 〖, 〈, ｛ ]
@@ -109,7 +122,7 @@ punctuator:
     "&" : [ "&", "＆", "＃", "＠", ⅟, ½, ↉, ⅓, ⅔, ¼, ¾, ⅕, ⅖, ⅗, ⅘, ⅙, ⅚, ⅐, ⅛, ⅜, ⅝, ⅞, ⅑, ⅒ ]
     "*" : [ "*", ＊, "﹡", ※, ❂, ★, ☆, ✡, ❋, ❊, ❉, ❈, ❇, ❆, ❅, ❄, ❃, ❁, ❀, ✿, ✾, ✽, ✼, ✻, ✺, ✹, ✸, ✷, ✶, ✵, ✴, ✳, ✲, ✱, ✰, ✯, ✮, ✭, ✬, ✫, ✪, ✩, ✧, ✦, ✥, ✤, ✣, ✢, ⛤, ⛥, ⛦, ⛧ ]
     "^" : [ "^", "+", "-", "×", "÷", "±", "=", "≠", "＝", "＋", "－", "＜", "＞", "∈", "∏", "∑", "≮", "≯", "∕", "√", "∝", "∞", ∟, ∠, ∥, ∧, ∨, ∩, ∪, ∫, ∮, ∴, ∵, ∷, ∽, ≈, ≌, ≒, ≡, ≤, ≥, ≦, ≧, ⊕, ⊙, ⊥, ⊿, ㏑, ㏒ ]
-    "=" : { commit: "=" }
+    # "=" : { commit: "=" }
     "-" : { commit: "-" }
     "," : { commit: "," }
     "." : { commit: "." }
@@ -153,3 +166,4 @@ recognizer:
 #    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$"
+    reverse_lookup: "^=[a-z]*'?$"
