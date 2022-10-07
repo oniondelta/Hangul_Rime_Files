@@ -15,7 +15,7 @@
 
   > 在韓文各種音碼鍵位中，有較短碼之優勢
 
-- Hangul_Onion_Shape（自創洋蔥形碼鍵位）
+- Hangul_Onion_Structure（自創洋蔥形碼鍵位）
 
   > 使用簡速字根，每字只要 2～3 碼，碼長最短
 
