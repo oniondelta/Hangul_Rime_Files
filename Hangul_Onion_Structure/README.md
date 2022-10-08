@@ -3,16 +3,16 @@
 #### ※ 請勿使用於商業營利相關行為
 #### ※ Commercial use is prohibited
 
-## 部落格方案連結 (Blog)：
+## 部落格
 - http://deltazone.pixnet.net/blog/post/341170670
 
-## 解說 (Description)：
+## 解說 (Description)
 - http://deltazone.pixnet.net/blog/post/264243364
 
 ![介紹1](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/hangul2020_en-1.jpg)
 ![介紹2](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/hangul2020_en-2.jpg)
 
-## 贊助 (Donate)：
+## 贊助 (Donate)
 
 從第一個方案上傳已持續更新五年以上！方案從頭到尾大改、新創、新增非常多功能！且做了許多圖文說明！花了族繁不及備載的心力！
 
