@@ -3,10 +3,8 @@
 #### ※ 請勿使用於商業營利相關行為
 #### ※ Commercial use is prohibited
 
-## 部落格
-- http://deltazone.pixnet.net/blog/post/341170670
+## 編碼說明
 
-## 解說 (Description)
 - http://deltazone.pixnet.net/blog/post/264243364
 
 ![介紹1](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/hangul2020_en-1.jpg)
