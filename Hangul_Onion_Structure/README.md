@@ -9,8 +9,8 @@
 ## 解說 (Description)：
 - http://deltazone.pixnet.net/blog/post/264243364
 
-![介紹1](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Shape/hangul2020_en-1.jpg)
-![介紹2](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Shape/hangul2020_en-2.jpg)
+![介紹1](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/hangul2020_en-1.jpg)
+![介紹2](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/hangul2020_en-2.jpg)
 
 ## 贊助 (Donate)：
 
