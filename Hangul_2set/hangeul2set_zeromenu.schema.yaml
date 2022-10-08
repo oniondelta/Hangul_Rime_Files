@@ -90,6 +90,8 @@ translator:
   enable_user_dict: true
   enable_sentence: false
   enable_completion: false
+  disable_user_dict_for_patterns:
+    - ^[a-zQWERTOP]+$
   preedit_format:
     # - xform/pp/P/ #此條目只有反查 comment 會用到，preedit不會用到，因以下有引用，故添加。
 

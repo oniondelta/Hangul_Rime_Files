@@ -82,6 +82,8 @@ translator:
   enable_user_dict: true
   enable_sentence: false
   enable_completion: false
+  disable_user_dict_for_patterns:
+    - ^[a-zQWERTOP]+$
   preedit_format:
     # - xform/pp/P/
 
