@@ -23,6 +23,8 @@
 
 ## 特殊鍵
 
+單音只在 Hangul_HNC 和 Hangul_Onion_Structure 適用
+
 - 後綴「 ; 」可出諺文對映漢字
 
 - 後綴「 / 」可出諺文單音
