@@ -336,7 +336,7 @@ key_binder:
 ###
     - {accept: Up, send: KP_Left, when: composing} #左移一個注音
     - {accept: Up, send: Up, when: paging} #修正上條目出現的bug
-    - {accept: Right, send: Shift+Right, when: composing} #右移一整個字
+    # - {accept: Right, send: Shift+Right, when: composing} #右移一整個字 #為了使隱藏 menu 時可作用故改用下方設定
     - {accept: Shift+Right, send: Right, when: composing} #右移一個注音
     - {accept: Shift+Left, send: KP_Left, when: composing} #左移一個注音
     - {accept: Left, send: Page_Up, when: paging}
@@ -352,6 +352,8 @@ key_binder:
     - {accept: Down, send: Right, when: composing}
     - {accept: Down, send: Down, when: has_menu}
     - {accept: Down, send: Down, when: paging}
+    - {accept: Right, send: Right, when: composing} #移到開頭並展開選單
+    - {accept: Right, send: Shift+Right, when: has_menu} #右移一整個字
     - {accept: Control+semicolon, toggle: kr_0m, when: always}
     - {accept: Control+apostrophe, toggle: space_mode, when: always}
 editor:
@@ -360,7 +362,7 @@ editor:
     Return: commit_composition
     KP_Enter: commit_composition
     Control+Return: commit_script_text
-    # Shift+Return: commit_raw_input  #失效，改用 lua 處理
+    # Shift+Return: commit_raw_input  #半上屏狀態時失效，改用 lua 處理
 
 recognizer:
   patterns:
