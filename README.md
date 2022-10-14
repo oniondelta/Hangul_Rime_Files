@@ -33,9 +33,17 @@
 
 - 前綴「 = 」反查漢字其諺文發音
 
-## 備註
+## 使用方案
 
-使用 Hangul_2set 和 Hangul_HNC 方案，請把「lua」資料夾和「rime.lua」放入「用戶設定(Rime)」資料夾中
+1. 點右上綠色 〔↓Code〕 選擇 Download ZIP 下載
+
+2. 解壓縮 ZIP 進入資料夾，選擇欲使用方案資料夾：Hangul_2set、Hangul_HNC、Hangul_Onion_Structure
+
+3. 內含文件通通放入『 Rime 』用戶設定資料夾
+
+4. 使用 Hangul_2set 或 Hangul_HNC 方案，須把「lua」資料夾和「rime.lua」放入『 Rime 』用戶設定資料夾中
+
+5. 按「重新部署」完成！
 
 
 ## 贊助 (Donate)
