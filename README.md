@@ -41,7 +41,7 @@
 
 3. 內含文件通通放入『 Rime 』用戶設定資料夾
 
-4. 使用 Hangul_2set 或 Hangul_HNC 方案，須把「lua」資料夾和「rime.lua」放入『 Rime 』用戶設定資料夾中
+4. 使用 Hangul_2set 或 Hangul_HNC 方案，另須把「lua」資料夾和「rime.lua」放入『 Rime 』用戶設定資料夾中
 
 5. 按「重新部署」完成！
 
