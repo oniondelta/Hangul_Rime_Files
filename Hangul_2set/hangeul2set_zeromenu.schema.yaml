@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set_zeromenu # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: "❃韓語2set❃（零選單）"
-  version: "202210"
+  version: "202211"
   author:
     - 『洋蔥』
   description: |
@@ -27,7 +27,7 @@ switches:
     states: [ "展開", "隱藏" ]
   - name: space_mode
     reset: 1
-    states: [ "普通", "空格" ]
+    states: [ "無空", "空格" ]
 
 engine:
   processors:
