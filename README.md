@@ -21,6 +21,7 @@
 
   > 前後韓文字會有切分變數，雖已用詞典去校正避免，但有時還是得選字
 
+
 ## 特殊鍵
 
 單音特殊鍵只在 Hangul_HNC 和 Hangul_Onion_Structure 適用
@@ -32,6 +33,12 @@
 - 後綴「 / 」「 / 」可出諺文單音（會合併之單音）
 
 - 前綴「 = 」反查漢字其諺文發音
+
+
+## hangeul2set_zeromenu 該方案可隱藏候選項
+
+![193610423-fe3faffa-3143-45ab-a347-e9bba7b00425](https://user-images.githubusercontent.com/54584047/203571115-e429b0c6-5714-4456-95fa-a9667e3deec0.gif)
+
 
 ## 使用方案
 
