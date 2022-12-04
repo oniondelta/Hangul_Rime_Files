@@ -3,7 +3,7 @@
 #### ※ 請勿使用於商業營利相關行為
 #### ※ Commercial use is prohibited
 
-## 內含三種不同韓文鍵位方案
+## 內含韓文三種不同鍵位方案
 
 - Hangul_2set
 
