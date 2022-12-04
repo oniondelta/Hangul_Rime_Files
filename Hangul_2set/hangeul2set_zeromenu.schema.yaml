@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set_zeromenu # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: "❃韓語2set❃（零選單）"
-  version: "202211"
+  version: "202212"
   author:
     - 『洋蔥』
   description: |
@@ -348,7 +348,9 @@ key_binder:
     # - {accept: Return, send: space, when: composing}
     # - {accept: Return, send: Return, when: paging}
     - {accept: BackSpace, send: Shift+BackSpace, when: composing}
+    - {accept: BackSpace, send: BackSpace, when: has_menu}
     - {accept: Shift+BackSpace, send: BackSpace, when: composing}
+    - {accept: Shift+BackSpace, send: Shift+BackSpace, when: has_menu}
     - {accept: Down, send: Right, when: composing}
     - {accept: Down, send: Down, when: has_menu}
     - {accept: Down, send: Down, when: paging}
