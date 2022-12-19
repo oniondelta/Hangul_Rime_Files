@@ -141,8 +141,9 @@ local function kr_2set_0m_choice(key,env)
     -- elseif key:eq(KeyEvent("Down")) and string.find(context.input, "[^0-9]$") then
     --   context:reopen_previous_segment()
     --   -- context:confirm_current_selection()
-    --   -- key:repr("Release+Right")
-    --   -- engine:process_key("Right")  #輸入法會崩潰
+    --   -- key:repr("Release+Right")  -- 無法作用
+    --   -- engine:process_key("Right")  -- 輸入法會崩潰
+    --   -- engine:process_key(KeyEvent("Right"))  -- 測試OK!
     --   return 1
 
     --- 修正輸入途中插入「數字」，無法半上屏，需按2次 enter 之問題，改直上屏
