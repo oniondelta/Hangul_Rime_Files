@@ -351,7 +351,8 @@ key_binder:
     - {accept: BackSpace, send: BackSpace, when: has_menu}
     - {accept: Shift+BackSpace, send: BackSpace, when: composing}
     - {accept: Shift+BackSpace, send: Shift+BackSpace, when: has_menu}
-    - {accept: Down, send: Right, when: composing}
+    # - {accept: Down, send: Right, when: composing}
+    - {accept: Down, send_sequence: "{Right}{Left}", when: composing}
     - {accept: Down, send: Down, when: has_menu}
     - {accept: Down, send: Down, when: paging}
     - {accept: Right, send: Right, when: composing} #移到開頭並展開選單
