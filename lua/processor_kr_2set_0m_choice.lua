@@ -109,6 +109,27 @@ local function kr_2set_0m_choice(key,env)
     --   end
     -- end
 
+    -- ---- 與上例函數一樣，只是用向下相容寫法
+    -- local function check_qwertop()
+    --   if key:repr() == "Shift+Q" then
+    --     return true
+    --   elseif key:repr() == "Shift+W" then
+    --     return true
+    --   elseif key:repr() == "Shift+E" then
+    --     return true
+    --   elseif key:repr() == "Shift+R" then
+    --     return true
+    --   elseif key:repr() == "Shift+T" then
+    --     return true
+    --   elseif key:repr() == "Shift+O" then
+    --     return true
+    --   elseif key:repr() == "Shift+P" then
+    --     return true
+    --   else
+    --     return false
+    --   end
+    -- end
+
     -- --- 《最主要部分》使 [a-zQWERTOP] 組字且半上屏
     -- if set_char[key:repr()] or check_qwertop() then
     --   local lastword = string.gsub(key:repr(), "Shift%+", "")
