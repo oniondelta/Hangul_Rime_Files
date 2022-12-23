@@ -13,6 +13,16 @@ local set_char = Set {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"
 local set_number = Set {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
 
 
+-- --- return char(0x20~0x7f) or ""
+-- local function ascii_c(key,pat)
+--   local pat = pat and ('^[%s]$'):format(pat) or "^.$"
+--   local code = key.keycode
+--   return key.modifier <=1 and
+--          code >=0x20 and code <=0x7f and
+--          string.char(code):match(pat) or ""
+-- end
+
+
 local function kr_2set_0m_choice(key,env)
   local engine = env.engine
   local context = engine.context
@@ -57,10 +67,10 @@ local function kr_2set_0m_choice(key,env)
   -- elseif context:get_option("kr_0m") then
 
     --------------------------------------------
-    --- 函數格式 ascii(key, "a-zQWERTOP")，function ascii(key,pat) 該函數需打開
+    --- 函數格式 ascii_c(key, "a-zQWERTOP")，function ascii_c(key,pat) 該函數需打開
 
     --- return char(0x20~0x7f) or ""
-    local function ascii(key,pat)
+    local function ascii_c(key,pat)
       local pat = pat and ('^[%s]$'):format(pat) or "^.$"
       local code = key.keycode
       return key.modifier <=1 and
@@ -69,9 +79,9 @@ local function kr_2set_0m_choice(key,env)
     end
 
     --- 《最主要部分》使 [a-zQWERTOP] 組字且半上屏
-    if set_char[ascii(key, "a-zQWERTOP")] then
+    if set_char[ascii_c(key, "a-zQWERTOP")] then
       context:reopen_previous_segment()
-      context.input = context.input .. ascii(key, "a-zQWERTOP")
+      context.input = context.input .. ascii_c(key, "a-zQWERTOP")
       context:confirm_current_selection()
       return 1
 
