@@ -35,7 +35,7 @@
 - 前綴「 = 」反查漢字其諺文發音
 
 
-## hangeul2set_zeromenu 該方案可隱藏候選項
+## hangeul2set_zeromenu 方案可隱藏候選項
 
 ![193610423-fe3faffa-3143-45ab-a347-e9bba7b00425](https://user-images.githubusercontent.com/54584047/203571115-e429b0c6-5714-4456-95fa-a9667e3deec0.gif)
 
