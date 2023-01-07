@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set_zeromenu # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: "❃韓語2set❃（零選單）"
-  version: "202212"
+  version: "202301"
   author:
     - 『洋蔥』
   description: |
@@ -83,6 +83,7 @@ speller:
     - derive/^E/ee/
     - derive/^R/rr/
     - derive/^T/tt/
+    - abbrev/^([a-zQWERTOP]+)$/$1;/  #讓沒有對應漢字之諺文，在誤按「;」後不用修正。
 
 translator:
   dictionary: hangeul2set
