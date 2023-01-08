@@ -301,6 +301,18 @@ punctuator:
     "Y" : { commit: "ㅛ" }
     "Z" : { commit: "ㅋ" }
 ##### 讓 fluency_editor 時也可直上屏#####
+    ### 數字鍵如此影響選字，需 key_binder 修正。
+    "1" : { commit: "1" }
+    "2" : { commit: "2" }
+    "3" : { commit: "3" }
+    "4" : { commit: "4" }
+    "5" : { commit: "5" }
+    "6" : { commit: "6" }
+    "7" : { commit: "7" }
+    "8" : { commit: "8" }
+    "9" : { commit: "9" }
+    "0" : { commit: "0" }
+    #####################
     "~" : { commit: "~" }
     "!" : { commit: "!" }
     "@" : { commit: "@" }
@@ -362,6 +374,18 @@ key_binder:
     - {accept: Right, send: Shift+Right, when: has_menu} #右移一整個字
     - {accept: Control+semicolon, toggle: kr_0m, when: always}
     - {accept: Control+apostrophe, toggle: space_mode, when: always}
+### 以下修正數字鍵無法選字問題。
+    - {accept: 1, send: Control+1, when: has_menu}
+    - {accept: 2, send: Control+2, when: has_menu}
+    - {accept: 3, send: Control+3, when: has_menu}
+    - {accept: 4, send: Control+4, when: has_menu}
+    - {accept: 5, send: Control+5, when: has_menu}
+    - {accept: 6, send: Control+6, when: has_menu}
+    - {accept: 7, send: Control+7, when: has_menu}
+    - {accept: 8, send: Control+8, when: has_menu}
+    - {accept: 9, send: Control+9, when: has_menu}
+    - {accept: 0, send: Control+0, when: has_menu}
+
 editor:
   bindings:
     space: commit_composition
