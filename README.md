@@ -5,17 +5,17 @@
 
 ## 內含韓文三種不同鍵位方案
 
-- Hangul_2set
+- [Hangul_2set](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_2set/README.md)
 
   > 最流行，左右手輪流按，手感佳
 
   > 有 Shift + [QWEROP] 鍵位，需習慣
   
-- Hangul_HNC
+- [Hangul_HNC](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_HNC/README.md)
 
   > 在韓文各種音碼鍵位中，有較短碼之優勢
 
-- Hangul_Onion_Structure（自創洋蔥形碼鍵位）
+- [Hangul_Onion_Structure](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/README.md)（自創洋蔥形碼鍵位）
 
   > 使用簡速字根，每字只要 2～3 碼，碼長最短
 
