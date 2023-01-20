@@ -6,6 +6,10 @@
 
 local function kr_hnc_1m_filter(input, env)
   local kr_1m = env.engine.context:get_option("kr_1m")
+  local o_input = env.engine.context.input  -- 原始未轉換輸入碼
+  local special_key_v = string.match(o_input, '[v;]$')
+  local special_key_qq = string.match(o_input, 'qq$')
+  local special_key_slash = string.match(o_input, '//$')
 
   -- local find_prefix = env.engine.context.input
   -- local han_key = string.match(find_prefix, ';$')
@@ -21,9 +25,9 @@ local function kr_hnc_1m_filter(input, env)
     -- local kr_preedit = cand.preedit
     -- local special_key = string.match(kr_preedit, '[›]$')
     -- local han_key = string.match(kr_preedit, '；$')
-    local special_key_v = string.match(env.engine.context.input, '[v;]$')
-    local special_key_qq = string.match(env.engine.context.input, 'qq$')
-    local special_key_slash = string.match(env.engine.context.input, '//$')
+    -- local special_key_v = string.match(env.engine.context.input, '[v;]$')
+    -- local special_key_qq = string.match(env.engine.context.input, 'qq$')
+    -- local special_key_slash = string.match(env.engine.context.input, '//$')
     if (kr_1m) and (not special_key_v) and (not special_key_qq) and (not special_key_slash) then
       table.insert(cands, cand)
       -- yield(cands[1])
