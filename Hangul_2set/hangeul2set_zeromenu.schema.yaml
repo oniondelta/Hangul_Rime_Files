@@ -18,6 +18,7 @@ switches:
     reset: 0
     states: [ "韓文", "英文" ]
   - name: full_shape
+    reset: 0
     states: [ "半形", "全形" ]
   - name: ascii_punct
     reset: 0

@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語2set❃
-  version: "202210"
+  version: "202301"
   author:
     - 『洋蔥』
   description: |
@@ -17,6 +17,7 @@ switches:
     reset: 0
     states: [ "韓文", "英文" ]
   - name: full_shape
+    reset: 0
     states: [ "半形", "全形" ]
   - name: ascii_punct
     reset: 0
