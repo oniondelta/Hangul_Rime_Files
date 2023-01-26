@@ -42,7 +42,7 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - table_translator@hangeul_phrase
+    - table_translator@custom_phrase
     - reverse_lookup_translator
     - script_translator
 
@@ -198,13 +198,13 @@ translator:
   #   __include: translator/preedit_format
 
 
-hangeul_phrase:
+custom_phrase:
   dictionary: ""
   user_dict: hangeul2set_phrase
   db_class: stabledb #tabledb
   enable_completion: false
   enable_sentence: false
-  initial_quality: "1"
+  initial_quality: 1
 
 reverse_lookup:
   dictionary: cangjie5

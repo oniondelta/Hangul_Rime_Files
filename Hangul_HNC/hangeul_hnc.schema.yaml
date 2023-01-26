@@ -48,7 +48,7 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - table_translator@hangeul_hnc_phrase
+    - table_translator@custom_phrase
     - reverse_lookup_translator
     - script_translator
 
@@ -103,13 +103,13 @@ translator:
     # - xform/;/ /  #
     - xform/'/ /  #
 
-hangeul_hnc_phrase:
+custom_phrase:
   dictionary: ""
   user_dict: hangeul_hnc_phrase
   db_class: stabledb #tabledb
   enable_completion: false
   enable_sentence: false
-  initial_quality: "1"
+  initial_quality: 1
 
 reverse_lookup:
   dictionary: cangjie5
