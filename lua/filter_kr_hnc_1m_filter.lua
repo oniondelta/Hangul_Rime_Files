@@ -5,8 +5,10 @@
 --]]
 
 local function kr_hnc_1m_filter(input, env)
-  local kr_1m = env.engine.context:get_option("kr_1m")
-  local o_input = env.engine.context.input  -- 原始未轉換輸入碼
+  local engine = env.engine
+  local context = engine.context
+  local kr_1m = context:get_option("kr_1m")
+  local o_input = context.input  -- 原始未轉換輸入碼
   local special_key_v = string.match(o_input, '[v;]$')
   local special_key_qq = string.match(o_input, 'qq$')
   local special_key_slash = string.match(o_input, '//$')
