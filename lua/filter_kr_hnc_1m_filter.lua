@@ -3,15 +3,25 @@
 （hangeul_hnc）
 韓語遮屏只剩一個選項。開關（kr_1m）
 --]]
+local M={}
+-- function M.init(env)
+-- end
 
-local function kr_hnc_1m_filter(input, env)
+-- function M.fini(env)
+-- end
+
+-- local function kr_hnc_1m_filter(inp, env)
+function M.func(inp,env)
   local engine = env.engine
   local context = engine.context
   local kr_1m = context:get_option("kr_1m")
   local o_input = context.input  -- 原始未轉換輸入碼
-  local special_key_v = string.match(o_input, '[v;]$')
-  local special_key_qq = string.match(o_input, 'qq$')
-  local special_key_slash = string.match(o_input, '//$')
+  -- local special_key_v = string.match(o_input, '[v;]$')
+  -- local special_key_qq = string.match(o_input, 'qq$')
+  -- local special_key_slash = string.match(o_input, '//$')
+  local special_key = string.match(o_input, '[v;]$') or
+                      string.match(o_input, 'qq$') or
+                      string.match(o_input, '//$')
 
   -- local find_prefix = env.engine.context.input
   -- local han_key = string.match(find_prefix, ';$')
@@ -23,19 +33,20 @@ local function kr_hnc_1m_filter(input, env)
   -- local caret_pos = env.engine.context.caret_pos
 
   local cands = {}
-  for cand in input:iter() do
+  for cand in inp:iter() do
     -- local kr_preedit = cand.preedit
     -- local special_key = string.match(kr_preedit, '[›]$')
     -- local han_key = string.match(kr_preedit, '；$')
     -- local special_key_v = string.match(env.engine.context.input, '[v;]$')
     -- local special_key_qq = string.match(env.engine.context.input, 'qq$')
     -- local special_key_slash = string.match(env.engine.context.input, '//$')
-    if (kr_1m) and (not special_key_v) and (not special_key_qq) and (not special_key_slash) then
+    -- if kr_1m and not special_key_v and not special_key_qq and not special_key_slash then
+    if kr_1m and not special_key then
       table.insert(cands, cand)
       -- yield(cands[1])
   -- elseif (kr_1m) then
   --   local cands = {}
-  --   for cand in input:iter() do
+  --   for cand in inp:iter() do
   --     table.insert(cands, cand)
   --   end
   --   yield(cands[1])
@@ -44,8 +55,9 @@ local function kr_hnc_1m_filter(input, env)
     end
   end
 
-  if (kr_1m) and cands[1]~=nil then
-    if (not special_key_v) and (not special_key_qq) and (not special_key_slash) then
+  if kr_1m and cands[1] then
+    -- if not special_key_v and not special_key_qq and not special_key_slash then
+    if not special_key then
       yield(cands[1])
     end
   end
@@ -53,4 +65,5 @@ local function kr_hnc_1m_filter(input, env)
 end
 
 
-return kr_hnc_1m_filter
+-- return kr_hnc_1m_filter
+return M

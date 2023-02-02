@@ -58,7 +58,7 @@ local function kr_2set_0m_choice(key,env)
 
 
   --- pass ascii_mode
-  if (o_ascii_mode) then
+  if o_ascii_mode then
   -- if context:get_option('ascii_mode') then
     return 2
 
@@ -69,7 +69,7 @@ local function kr_2set_0m_choice(key,env)
 
 
   --- 修正「Shift+Return」commit_raw_input 設定失效問題
-  elseif key:repr() == "Shift+Return" and (context:is_composing()) then
+  elseif key:repr() == "Shift+Return" and context:is_composing() then
   -- elseif key:eq(KeyEvent("Shift+Return")) and (context:is_composing()) then  -- KeyEvent 在官版小狼毫中會有問題
     engine:commit_text(context.input)
     context:clear()
@@ -89,11 +89,11 @@ local function kr_2set_0m_choice(key,env)
 
 
   --- 避免中途插入碼變到最後
-  elseif caret_pos ~= context.input:len() then
+  elseif (caret_pos ~= context.input:len()) then
     return 2
 
 
-  elseif (o_kr_0m) then  -- 提到前面限定 and (caret_pos == context.input:len())
+  elseif o_kr_0m then  -- 提到前面限定 and (caret_pos == context.input:len())
   -- elseif context:get_option("kr_0m") then
 
 
@@ -206,21 +206,21 @@ local function kr_2set_0m_choice(key,env)
 
 
     --- 不在輸入狀態或是有選單時略過處理
-    elseif (not context:is_composing()) or (context:has_menu()) then
+    elseif not context:is_composing() or context:has_menu() then
       return 2
 
 
     --- 修正尾綴「;」出漢字，使其可展示選單
-    elseif key:repr() == "semicolon" then
+    elseif (key:repr() == "semicolon") then
       -- local cxtil = string.len(hangul) - caret_pos
       --- 開頭防止漢字不 reopen 去組字。
-      if string.len(hangul) == 3 then  -- 3等同一個諺文單位的字符長度
+      if (string.len(hangul) == 3) then  -- 3等同一個諺文單位的字符長度
       -- if string.match(context.input, "^..$") then
         context:reopen_previous_segment()
         context.input = context.input .. ";"
         return 1
       --- 檢視倒數第二個字是否為諺文，如果是讓選單只選漢字，避免還要從諺文開始選。
-      elseif check_korea(hangul_b) == true then
+      elseif (check_korea(hangul_b) == true) then
         context:reopen_previous_segment()
         engine:process_key( KeyEvent("Shift+Tab") )
         -- context:confirm_current_selection()
@@ -229,7 +229,7 @@ local function kr_2set_0m_choice(key,env)
         return 1
       --- 防止前面選字後，後面不 reopen 去組字；並且一系列漢字可一同選，非拆開。
       elseif string.match(context.input, ";[a-zQWERTOP]+$") then
-      -- elseif cxtil == 1 then
+      -- elseif (cxtil == 1) then
         context:reopen_previous_segment()
         context.input = context.input .. ";"
         -- 測試用 engine:commit_text(caret_pos .. " ".. context.input:len()..' '..string.len(hangul))
@@ -251,7 +251,7 @@ local function kr_2set_0m_choice(key,env)
 
 
     --- 使「\\」可分節
-    elseif key:repr() == 'backslash' then
+    elseif (key:repr() == 'backslash') then
       context:reopen_previous_segment()
       context.input = context.input .. "\\"
       context:confirm_current_selection()
@@ -279,7 +279,7 @@ local function kr_2set_0m_choice(key,env)
 
 
     --- 增加一般韓文輸入法操作，空格上屏自動末端空一格。
-    elseif (o_space_mode) and key:repr() == "space" and string.match(context.input, "^[a-zQWERTOP]+$") then  --只有韓文，不含漢字。如果漢字如此出字會不能記憶？
+    elseif o_space_mode and key:repr() == "space" and string.match(context.input, "^[a-zQWERTOP]+$") then  --只有韓文，不含漢字。如果漢字如此出字會不能記憶？
       -- if key:repr() == "space" and (context:is_composing()) and (not context:has_menu()) then
       -- if key:repr() == "space" and (context:is_composing()) and (not context:has_menu()) and (not string.match(hangul, "[%a%c%s]")) and (caret_pos == context.input:len()) then
       engine:commit_text(hangul .. " ")
@@ -289,14 +289,14 @@ local function kr_2set_0m_choice(key,env)
     end
 
 
-  elseif (not o_kr_0m) then
+  elseif not o_kr_0m then
   -- elseif not context:get_option("kr_0m") then
 
     --- 不在輸入狀態略過處理
-    if (not context:is_composing()) or (not o_space_mode) or key:repr() ~= "space" then
+    if not context:is_composing() or not o_space_mode or key:repr() ~= "space" then
       return 2
 
-    elseif string.match(context.input, "^[a-zQWERTOP]+$") and (not string.match(hangul, "[%a%c%s]")) then  -- 提到前面限定 and (caret_pos == context.input:len())
+    elseif string.match(context.input, "^[a-zQWERTOP]+$") and not string.match(hangul, "[%a%c%s]") then  -- 提到前面限定 and (caret_pos == context.input:len())
       engine:commit_text(hangul .. " ")
       context:clear()
       return 1
