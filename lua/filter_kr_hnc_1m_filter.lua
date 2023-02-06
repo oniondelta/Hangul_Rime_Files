@@ -3,7 +3,9 @@
 （hangeul_hnc）
 韓語遮屏只剩一個選項。開關（kr_1m）
 --]]
-local M={}
+
+-- local M={}
+-- local function init(env)
 -- function M.init(env)
 -- end
 
@@ -11,7 +13,8 @@ local M={}
 -- end
 
 -- local function kr_hnc_1m_filter(inp, env)
-function M.func(inp,env)
+local function filter(inp, env)
+-- function M.func(inp,env)
   local engine = env.engine
   local context = engine.context
   local kr_1m = context:get_option("kr_1m")
@@ -64,6 +67,6 @@ function M.func(inp,env)
 
 end
 
-
 -- return kr_hnc_1m_filter
-return M
+return { func = filter }
+-- return M
