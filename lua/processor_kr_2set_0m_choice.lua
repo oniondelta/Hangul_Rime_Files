@@ -45,7 +45,8 @@ end
 
 
 
-local function kr_2set_0m_choice(key,env)
+-- local function kr_2set_0m_choice(key,env)
+local function processor(key, env)
   local engine = env.engine
   local context = engine.context
   local hangul = context:get_commit_text()
@@ -310,4 +311,5 @@ local function kr_2set_0m_choice(key,env)
 end
 
 
-return kr_2set_0m_choice
+-- return kr_2set_0m_choice
+return { func = processor }
