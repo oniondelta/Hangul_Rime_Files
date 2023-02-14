@@ -19,17 +19,17 @@ local function filter(inp, env)
   local context = engine.context
   local kr_1m = context:get_option("kr_1m")
   local o_input = context.input  -- 原始未轉換輸入碼
-  -- local special_key_v = string.match(o_input, '[v;]$')
-  -- local special_key_qq = string.match(o_input, 'qq$')
-  -- local special_key_slash = string.match(o_input, '//$')
-  local special_key = string.match(o_input, '[v;]$') or
-                      string.match(o_input, 'qq$') or
-                      string.match(o_input, '//$')
+  -- local special_key_v = string.match(o_input, "[v;]$")
+  -- local special_key_qq = string.match(o_input, "qq$")
+  -- local special_key_slash = string.match(o_input, "//$")
+  local special_key = string.match(o_input, "[v;]$") or
+                      string.match(o_input, "qq$") or
+                      string.match(o_input, "//$")
 
   -- local find_prefix = env.engine.context.input
-  -- local han_key = string.match(find_prefix, ';$')
+  -- local han_key = string.match(find_prefix, ";$")
   -- local input_in = env.engine.context.input  -- 原始未轉換輸入碼
-  -- local han_key = string.match(input_in, ';')
+  -- local han_key = string.match(input_in, ";")
 
   -- local prefix = env.engine.schema.config:get_string("easy_en/prefix")
   -- local input_n = string.len(input_in)
@@ -38,11 +38,11 @@ local function filter(inp, env)
   local cands = {}
   for cand in inp:iter() do
     -- local kr_preedit = cand.preedit
-    -- local special_key = string.match(kr_preedit, '[›]$')
-    -- local han_key = string.match(kr_preedit, '；$')
-    -- local special_key_v = string.match(env.engine.context.input, '[v;]$')
-    -- local special_key_qq = string.match(env.engine.context.input, 'qq$')
-    -- local special_key_slash = string.match(env.engine.context.input, '//$')
+    -- local special_key = string.match(kr_preedit, "[›]$")
+    -- local han_key = string.match(kr_preedit, "；$")
+    -- local special_key_v = string.match(env.engine.context.input, "[v;]$")
+    -- local special_key_qq = string.match(env.engine.context.input, "qq$")
+    -- local special_key_slash = string.match(env.engine.context.input, "//$")
     -- if kr_1m and not special_key_v and not special_key_qq and not special_key_slash then
     if kr_1m and not special_key then
       table.insert(cands, cand)

@@ -233,7 +233,7 @@ local function processor(key, env)
       -- elseif (cxtil == 1) then
         context:reopen_previous_segment()
         context.input = context.input .. ";"
-        -- 測試用 engine:commit_text(caret_pos .. " ".. context.input:len()..' '..string.len(hangul))
+        -- 測試用 engine:commit_text(caret_pos .. " " .. context.input:len() .. " " .. string.len(hangul))
         return 1
       --- 防止前面為一般諺文，後面漢字不組字，並且讓選單只選漢字，避免還要從諺文開始選。
       else
@@ -242,7 +242,7 @@ local function processor(key, env)
         -- context:confirm_current_selection()
         context:select(0)  -- 也可以使用
         context.input = context.input .. ";"
-        -- 測試用 engine:commit_text(caret_pos .. " ".. context.input:len()..' '..string.len(hangul))
+        -- 測試用 engine:commit_text(caret_pos .. " " .. context.input:len() .. " " .. string.len(hangul))
         return 1
       end
       -- --- 以下原本設定，由於各種狀況都 reopen，漢字容易亂跳
@@ -252,7 +252,7 @@ local function processor(key, env)
 
 
     --- 使「\\」可分節
-    elseif (key:repr() == 'backslash') then
+    elseif (key:repr() == "backslash") then
       context:reopen_previous_segment()
       context.input = context.input .. "\\"
       context:confirm_current_selection()
