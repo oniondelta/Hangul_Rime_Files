@@ -8,7 +8,7 @@
 --]]
 
 
-local set_char = Set {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" , "Q", "W", "E", "R", "T" ,"O" ,"P"}  --> {a=true,b=true...}
+local set_char = Set {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "Q", "W", "E", "R", "T", "O", "P"}  --> {a=true,b=true...}
 -- local set_char = Set {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"}  --> {a=true,b=true...}
 -- local set_number = Set {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
 
@@ -49,6 +49,7 @@ end
 local function processor(key, env)
   local engine = env.engine
   local context = engine.context
+  -- local comp = context.composition
   local hangul = context:get_commit_text()
   local caret_pos = context.caret_pos
   local o_ascii_mode = context:get_option("ascii_mode")
@@ -62,6 +63,11 @@ local function processor(key, env)
   if o_ascii_mode then
   -- if context:get_option('ascii_mode') then
     return 2
+
+
+  -- --- prevent segmentation fault (core dumped) （避免進入死循環，有用到 seg=comp:back() 建議使用去排除？）
+  -- elseif comp:empty() then
+  --   return 2
 
 
   --- pass release ctrl alt super
