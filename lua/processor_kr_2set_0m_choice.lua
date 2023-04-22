@@ -102,7 +102,7 @@ local function processor(key, env)
 
   elseif o_kr_0m then  -- 提到前面限定 and (caret_pos == context.input:len())
   -- elseif context:get_option("kr_0m") then
-
+    -- local set_char = Set {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "Q", "W", "E", "R", "T", "O", "P"}  --> {a=true,b=true...}
 
     --------------------------------------------
     --- 《最主要部分》使 [a-zQWERTOP] 組字且半上屏
