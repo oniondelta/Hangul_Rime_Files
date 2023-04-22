@@ -49,14 +49,14 @@ end
 local function processor(key, env)
   local engine = env.engine
   local context = engine.context
-  -- local comp = context.composition
-  local hangul = context:get_commit_text()
   local caret_pos = context.caret_pos
+  -- local comp = context.composition
+  local g_c_t = context:get_commit_text()
   local o_ascii_mode = context:get_option("ascii_mode")
   local o_kr_0m = context:get_option("kr_0m")
   local o_space_mode = context:get_option("space_mode")
 
-  local hangul_b = string.sub(hangul,-6,-4) or ""  -- 確認倒數第二字是否為諺文用
+  local hangul_b = string.sub(g_c_t,-6,-4) or ""  -- 確認倒數第二字是否為諺文用
 
 
   --- pass ascii_mode
@@ -219,9 +219,9 @@ local function processor(key, env)
 
     --- 修正尾綴「;」出漢字，使其可展示選單
     elseif (key:repr() == "semicolon") then
-      -- local cxtil = string.len(hangul) - caret_pos
+      -- local cxtil = string.len(g_c_t) - caret_pos
       --- 開頭防止漢字不 reopen 去組字。
-      if (string.len(hangul) == 3) then  -- 3等同一個諺文單位的字符長度
+      if (string.len(g_c_t) == 3) then  -- 3等同一個諺文單位的字符長度
       -- if string.match(context.input, "^..$") then
         context:reopen_previous_segment()
         context.input = context.input .. ";"
@@ -239,7 +239,7 @@ local function processor(key, env)
       -- elseif (cxtil == 1) then
         context:reopen_previous_segment()
         context.input = context.input .. ";"
-        -- 測試用 engine:commit_text(caret_pos .. " " .. context.input:len() .. " " .. string.len(hangul))
+        -- 測試用 engine:commit_text(caret_pos .. " " .. context.input:len() .. " " .. string.len(g_c_t))
         return 1
       --- 防止前面為一般諺文，後面漢字不組字，並且讓選單只選漢字，避免還要從諺文開始選。
       else
@@ -248,7 +248,7 @@ local function processor(key, env)
         -- context:confirm_current_selection()
         context:select(0)  -- 也可以使用
         context.input = context.input .. ";"
-        -- 測試用 engine:commit_text(caret_pos .. " " .. context.input:len() .. " " .. string.len(hangul))
+        -- 測試用 engine:commit_text(caret_pos .. " " .. context.input:len() .. " " .. string.len(g_c_t))
         return 1
       end
       -- --- 以下原本設定，由於各種狀況都 reopen，漢字容易亂跳
@@ -280,7 +280,7 @@ local function processor(key, env)
     -- -- elseif set_number[ascii_c(key, "0-9")] then
     --   -- context.input = context.input .. key:repr()
     --   -- context:confirm_current_selection()
-    --   engine:commit_text(hangul .. key:repr())
+    --   engine:commit_text(g_c_t .. key:repr())
     --   context:clear()
     --   return 1
 
@@ -288,8 +288,8 @@ local function processor(key, env)
     --- 增加一般韓文輸入法操作，空格上屏自動末端空一格。
     elseif o_space_mode and key:repr() == "space" and string.match(context.input, "^[a-zQWERTOP]+$") then  --只有韓文，不含漢字。如果漢字如此出字會不能記憶？
       -- if key:repr() == "space" and (context:is_composing()) and (not context:has_menu()) then
-      -- if key:repr() == "space" and (context:is_composing()) and (not context:has_menu()) and (not string.match(hangul, "[%a%c%s]")) and (caret_pos == context.input:len()) then
-      engine:commit_text(hangul .. " ")
+      -- if key:repr() == "space" and (context:is_composing()) and (not context:has_menu()) and (not string.match(g_c_t, "[%a%c%s]")) and (caret_pos == context.input:len()) then
+      engine:commit_text(g_c_t .. " ")
       context:clear()
       return 1
 
@@ -303,8 +303,8 @@ local function processor(key, env)
     if not context:is_composing() or not o_space_mode or key:repr() ~= "space" then
       return 2
 
-    elseif string.match(context.input, "^[a-zQWERTOP]+$") and not string.match(hangul, "[%a%c%s]") then  -- 提到前面限定 and (caret_pos == context.input:len())
-      engine:commit_text(hangul .. " ")
+    elseif string.match(context.input, "^[a-zQWERTOP]+$") and not string.match(g_c_t, "[%a%c%s]") then  -- 提到前面限定 and (caret_pos == context.input:len())
+      engine:commit_text(g_c_t .. " ")
       context:clear()
       return 1
 
