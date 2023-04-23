@@ -49,6 +49,7 @@ end
 local function processor(key, env)
   local engine = env.engine
   local context = engine.context
+  local c_input = context.input
   local caret_pos = context.caret_pos
   -- local comp = context.composition
   local g_c_t = context:get_commit_text()
@@ -78,12 +79,12 @@ local function processor(key, env)
   --- 修正「Shift+Return」commit_raw_input 設定失效問題
   elseif key:repr() == "Shift+Return" and context:is_composing() then
   -- elseif key:eq(KeyEvent("Shift+Return")) and (context:is_composing()) then  -- KeyEvent 在官版小狼毫中會有問題
-    engine:commit_text(context.input)
+    engine:commit_text(c_input)
     context:clear()
     return 1
 
   --- pass reverse_lookup prefix （使反查鍵可展示全部選項）(沒開，即使 commit_composition 上屏，還是無法顯示選單)
-  elseif string.match(context.input, "=[a-z]?[a-z]?[a-z]?[a-z]?[a-z]?$") then
+  elseif string.match(c_input, "=[a-z]?[a-z]?[a-z]?[a-z]?[a-z]?$") then
     return 2
 
 
@@ -96,11 +97,11 @@ local function processor(key, env)
 
 
   --- 避免中途插入碼變到最後
-  elseif (caret_pos ~= context.input:len()) then
+  elseif (caret_pos ~= c_input:len()) then
     return 2
 
 
-  elseif o_kr_0m then  -- 提到前面限定 and (caret_pos == context.input:len())
+  elseif o_kr_0m then  -- 提到前面限定 and (caret_pos == c_input:len())
   -- elseif context:get_option("kr_0m") then
     -- local set_char = Set {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "Q", "W", "E", "R", "T", "O", "P"}  --> {a=true,b=true...}
 
@@ -109,15 +110,17 @@ local function processor(key, env)
     --- 函數格式 ascii_c(key, "a-zQWERTOP")，function ascii_c(key,pat) 該函數需打開
     if set_char[ascii_c(key, "a-zQWERTOP")] then
       --- 避開頭，和使一般諺文減少漢字亂跳（還是會）
-      if string.match(context.input, "^$") or string.match(context.input, ";$") then
+      if string.match(c_input, "^$") or string.match(c_input, ";$") then
         -- context:select(0)  --打開，漢字會一個一個分開，不連動變換
-        context.input = context.input .. ascii_c(key, "a-zQWERTOP")
+        -- context.input = c_input .. ascii_c(key, "a-zQWERTOP")
+        context:push_input( ascii_c(key, "a-zQWERTOP") )
         context:confirm_current_selection()
         return 1
       --- 以下為原本，上方補充漢字「;」接後續輸入，前面選字亂跑問題
       else
         context:reopen_previous_segment()
-        context.input = context.input .. ascii_c(key, "a-zQWERTOP")
+        -- context.input = c_input .. ascii_c(key, "a-zQWERTOP")
+        context:push_input( ascii_c(key, "a-zQWERTOP") )
         -- context:confirm_current_selection()
         context:select(0)  -- 也可以使用
         return 1
@@ -131,7 +134,7 @@ local function processor(key, env)
     -- -- local asciikeys = string.char(key.keycode)  -- char 沒限定範圍會報錯
     -- if set_char[string.char(key.keycode)] then  -- char 沒限定範圍會報錯
     --   context:reopen_previous_segment()
-    --   context.input = context.input .. string.char(key.keycode)  -- char 沒限定範圍會報錯
+    --   context.input = c_input .. string.char(key.keycode)  -- char 沒限定範圍會報錯
     --   context:confirm_current_selection()
     --   return 1
 
@@ -184,7 +187,7 @@ local function processor(key, env)
     --   local lastword = string.gsub(key:repr(), "Shift%+", "")
     --   -- local lastword = key:repr():match("^[a-z]$") or ""
     --   context:reopen_previous_segment()
-    --   context.input = context.input .. lastword
+    --   context.input = c_input .. lastword
     --   context:confirm_current_selection()
     --   return 1
 
@@ -205,7 +208,7 @@ local function processor(key, env)
     --   context:select(in_number)
     --   context:commit()
     --   -- context.input:push('space')
-    --   -- context.input = context.input .. "\\"
+    --   -- context.input = c_input .. "\\"
     --   -- context:confirm_previous_selection()
     --   -- context:confirm_current_selection()
     --   -- context:clear()
@@ -222,9 +225,10 @@ local function processor(key, env)
       -- local cxtil = string.len(g_c_t) - caret_pos
       --- 開頭防止漢字不 reopen 去組字。
       if (string.len(g_c_t) == 3) then  -- 3等同一個諺文單位的字符長度
-      -- if string.match(context.input, "^..$") then
+      -- if string.match(c_input, "^..$") then
         context:reopen_previous_segment()
-        context.input = context.input .. ";"
+        -- context.input = c_input .. ";"
+        context:push_input( ";" )
         return 1
       --- 檢視倒數第二個字是否為諺文，如果是讓選單只選漢字，避免還要從諺文開始選。
       elseif (check_korea(hangul_b) == true) then
@@ -232,14 +236,16 @@ local function processor(key, env)
         engine:process_key( KeyEvent("Shift+Tab") )
         -- context:confirm_current_selection()
         context:select(0)  -- 也可以使用
-        context.input = context.input .. ";"
+        -- context.input = c_input .. ";"
+        context:push_input( ";" )
         return 1
       --- 防止前面選字後，後面不 reopen 去組字；並且一系列漢字可一同選，非拆開。
-      elseif string.match(context.input, ";[a-zQWERTOP]+$") then
+      elseif string.match(c_input, ";[a-zQWERTOP]+$") then
       -- elseif (cxtil == 1) then
         context:reopen_previous_segment()
-        context.input = context.input .. ";"
-        -- 測試用 engine:commit_text(caret_pos .. " " .. context.input:len() .. " " .. string.len(g_c_t))
+        -- context.input = c_input .. ";"
+        context:push_input( ";" )
+        -- 測試用 engine:commit_text(caret_pos .. " " .. c_input:len() .. " " .. string.len(g_c_t))
         return 1
       --- 防止前面為一般諺文，後面漢字不組字，並且讓選單只選漢字，避免還要從諺文開始選。
       else
@@ -247,26 +253,28 @@ local function processor(key, env)
         engine:process_key( KeyEvent("Shift+Tab") )
         -- context:confirm_current_selection()
         context:select(0)  -- 也可以使用
-        context.input = context.input .. ";"
-        -- 測試用 engine:commit_text(caret_pos .. " " .. context.input:len() .. " " .. string.len(g_c_t))
+        -- context.input = c_input .. ";"
+        context:push_input( ";" )
+        -- 測試用 engine:commit_text(caret_pos .. " " .. c_input:len() .. " " .. string.len(g_c_t))
         return 1
       end
       -- --- 以下原本設定，由於各種狀況都 reopen，漢字容易亂跳
       -- context:reopen_previous_segment()
-      -- context.input = context.input .. ";"
+      -- context.input = c_input .. ";"
       -- return 1
 
 
     --- 使「\\」可分節
     elseif (key:repr() == "backslash") then
       context:reopen_previous_segment()
-      context.input = context.input .. "\\"
+      -- context.input = c_input .. "\\"
+      context:push_input( "\\" )
       context:confirm_current_selection()
       return 1
 
 
     -- --- 修正組字時，按「向下」鍵輸入消失問題（ schema 內可設定，故關閉）
-    -- elseif key:eq(KeyEvent("Down")) and string.match(context.input, "[^0-9]$") then
+    -- elseif key:eq(KeyEvent("Down")) and string.match(c_input, "[^0-9]$") then
     --   context:reopen_previous_segment()
     --   -- context:confirm_current_selection()
     --   -- key:repr("Release+Right")  -- 無法作用
@@ -278,7 +286,7 @@ local function processor(key, env)
     -- --- 修正輸入途中插入「數字」，無法半上屏，需按2次 enter 之問題，改直上屏（ schema 內可設定，故關閉）
     -- elseif set_number[key:repr()] then
     -- -- elseif set_number[ascii_c(key, "0-9")] then
-    --   -- context.input = context.input .. key:repr()
+    --   -- context.input = c_input .. key:repr()
     --   -- context:confirm_current_selection()
     --   engine:commit_text(g_c_t .. key:repr())
     --   context:clear()
@@ -286,9 +294,9 @@ local function processor(key, env)
 
 
     --- 增加一般韓文輸入法操作，空格上屏自動末端空一格。
-    elseif o_space_mode and key:repr() == "space" and string.match(context.input, "^[a-zQWERTOP]+$") then  --只有韓文，不含漢字。如果漢字如此出字會不能記憶？
+    elseif o_space_mode and key:repr() == "space" and string.match(c_input, "^[a-zQWERTOP]+$") then  --只有韓文，不含漢字。如果漢字如此出字會不能記憶？
       -- if key:repr() == "space" and (context:is_composing()) and (not context:has_menu()) then
-      -- if key:repr() == "space" and (context:is_composing()) and (not context:has_menu()) and (not string.match(g_c_t, "[%a%c%s]")) and (caret_pos == context.input:len()) then
+      -- if key:repr() == "space" and (context:is_composing()) and (not context:has_menu()) and (not string.match(g_c_t, "[%a%c%s]")) and (caret_pos == c_input:len()) then
       engine:commit_text(g_c_t .. " ")
       context:clear()
       return 1
@@ -303,7 +311,7 @@ local function processor(key, env)
     if not context:is_composing() or not o_space_mode or key:repr() ~= "space" then
       return 2
 
-    elseif string.match(context.input, "^[a-zQWERTOP]+$") and not string.match(g_c_t, "[%a%c%s]") then  -- 提到前面限定 and (caret_pos == context.input:len())
+    elseif string.match(c_input, "^[a-zQWERTOP]+$") and not string.match(g_c_t, "[%a%c%s]") then  -- 提到前面限定 and (caret_pos == c_input:len())
       engine:commit_text(g_c_t .. " ")
       context:clear()
       return 1
