@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul_hnc # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語HNC❃
-  version: "202301"
+  version: "202304"
   author:
     - 『洋蔥』
   description: |
@@ -226,6 +226,7 @@ key_binder:
     # - {accept: Return, send: space, when: composing}
     # - {accept: Return, send: Return, when: paging}
 ######################
+    - {accept: Control+Shift+5, toggle: kr_1m, when: always}
     - {accept: Control+semicolon, toggle: kr_1m, when: always}
 ######################
 
