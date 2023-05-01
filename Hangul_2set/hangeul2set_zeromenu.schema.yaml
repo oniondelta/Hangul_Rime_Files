@@ -87,7 +87,7 @@ speller:
     - abbrev/^([a-zQWERTOP]+)$/$1;/  #讓沒有對應漢字之諺文，在誤按「;」後不用修正。
 
 translator:
-  dictionary: hangeul2set
+  dictionary: hangeul2set.extended
   prism: hangeul2set_zeromenu
   enable_user_dict: true
   enable_sentence: false
