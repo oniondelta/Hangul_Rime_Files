@@ -44,15 +44,15 @@
 
 ## 使用方案
 
-1. 點右上綠色 〔↓Code〕 選擇 Download ZIP 下載
+1. 點右上綠色 〔↓Code〕 選擇 Download ZIP 下載。
 
-2. 解壓縮 ZIP 進入資料夾，選擇欲使用方案資料夾：Hangul_2set、Hangul_HNC、Hangul_Onion_Structure
+2. 解壓縮 ZIP 進入資料夾，選擇欲使用方案資料夾：Hangul_2set、Hangul_HNC、Hangul_Onion_Structure。
 
-3. 內含文件通通放入『 Rime 』用戶設定資料夾
+3. 內含文件通通放入『 Rime 』用戶設定資料夾。
 
 4. 再把「 essay-kr-hanja.txt 」韓文漢字八股文(詞頻)放入『 Rime 』用戶設定資料夾。
 
-之. 使用 Hangul_2set 或 Hangul_HNC 方案，另須把「lua」資料夾和「rime.lua」放入『 Rime 』用戶設定資料夾中
+5. 使用 Hangul_2set 或 Hangul_HNC 方案，另須把「 lua 」資料夾和「 rime.lua 」放入『 Rime 』用戶設定資料夾中。
 
 6. 按「重新部署」完成！
 
