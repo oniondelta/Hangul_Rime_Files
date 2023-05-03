@@ -18,13 +18,13 @@ local function filter(inp, env)
   local engine = env.engine
   local context = engine.context
   local kr_1m = context:get_option("kr_1m")
-  local o_input = context.input  -- 原始未轉換輸入碼
-  -- local special_key_v = string.match(o_input, "[v;]$")
-  -- local special_key_qq = string.match(o_input, "qq$")
-  -- local special_key_slash = string.match(o_input, "//$")
-  local special_key = string.match(o_input, "[v;]$") or
-                      string.match(o_input, "qq$") or
-                      string.match(o_input, "//$")
+  local c_input = context.input  -- 原始未轉換輸入碼
+  -- local special_key_v = string.match(c_input, "[v;]$")
+  -- local special_key_qq = string.match(c_input, "qq$")
+  -- local special_key_slash = string.match(c_input, "//$")
+  local special_key = string.match(c_input, "[v;]$") or
+                      string.match(c_input, "qq$") or
+                      string.match(c_input, "//$")
 
   -- local find_prefix = env.engine.context.input
   -- local han_key = string.match(find_prefix, ";$")
