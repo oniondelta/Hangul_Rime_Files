@@ -26,13 +26,10 @@ local function filter(inp, env)
                       string.match(c_input, "qq$") or
                       string.match(c_input, "//$")
 
-  -- local find_prefix = env.engine.context.input
-  -- local han_key = string.match(find_prefix, ";$")
-  -- local input_in = env.engine.context.input  -- 原始未轉換輸入碼
-  -- local han_key = string.match(input_in, ";")
-
+  -- local han_key = string.match(c_input, ";$")
+  -- local han_key = string.match(c_input, ";")
   -- local prefix = env.engine.schema.config:get_string("easy_en/prefix")
-  -- local input_n = string.len(input_in)
+  -- local input_n = string.len(c_input)
   -- local caret_pos = env.engine.context.caret_pos
 
   local cands = {}
