@@ -37,12 +37,11 @@ local function filter(inp, env)
     -- local kr_preedit = cand.preedit
     -- local special_key = string.match(kr_preedit, "[›]$")
     -- local han_key = string.match(kr_preedit, "；$")
-    -- local special_key_v = string.match(env.engine.context.input, "[v;]$")
-    -- local special_key_qq = string.match(env.engine.context.input, "qq$")
-    -- local special_key_slash = string.match(env.engine.context.input, "//$")
     -- if kr_1m and not special_key_v and not special_key_qq and not special_key_slash then
     if kr_1m and not special_key then
-      table.insert(cands, cand)
+      -- table.insert(cands, cand)
+      yield(cand)
+      return
       -- yield(cands[1])
   -- elseif (kr_1m) then
   --   local cands = {}
@@ -55,12 +54,12 @@ local function filter(inp, env)
     end
   end
 
-  if kr_1m and cands[1] then
-    -- if not special_key_v and not special_key_qq and not special_key_slash then
-    if not special_key then
-      yield(cands[1])
-    end
-  end
+  -- if kr_1m and cands[1] then
+  --   -- if not special_key_v and not special_key_qq and not special_key_slash then
+  --   if not special_key then
+  --     yield(cands[1])
+  --   end
+  -- end
 
 end
 
