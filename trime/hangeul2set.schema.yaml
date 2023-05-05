@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語2set❃
-  version: "202304"
+  version: "202305"
   author:
     - 『洋蔥』
   description: |
@@ -15,8 +15,9 @@ schema:
 switches:
   - name: ascii_mode
     reset: 0
-    states: [ "韓文", "英文" ] 
+    states: [ "韓文", "英文" ]
   - name: full_shape
+    reset: 0
     states: [ "半形", "全形" ]
 
 engine:
@@ -39,7 +40,7 @@ engine:
   translators:
     - punct_translator
     - script_translator
-    - table_translator@hangeul_phrase
+    # - table_translator@hangeul_phrase
 
 menu:
   alternative_select_keys: "1234567890"
@@ -47,6 +48,7 @@ menu:
 
 speller:
   alphabet: "abcdefghijklmnopqrstuvwxyz;QWERTOP"
+  initials: "abcdefghijklmnopqrstuvwxyzQWERTOP"
   delimiter: "'"
   algebra:
     - xform/mqo/QO/
@@ -91,67 +93,58 @@ translator:
 #    - ^[a-z;]{2}$
 #    - ^[a-z;]{3}$
 
-hangeul_phrase:
-  dictionary: ""
-  user_dict: hangeul2set_phrase
-  db_class: tabledb #stabledb
-  enable_completion: false
-  enable_sentence: false
-  initial_quality: "1"
+# hangeul_phrase:
+#   dictionary: ""
+#   user_dict: hangeul2set_phrase
+#   db_class: tabledb #stabledb
+#   enable_completion: false
+#   enable_sentence: false
+#   initial_quality: "1"
 
 
 punctuator:
   use_space: true
   full_shape:
     # " " : { commit: "　" }
-    "<" : { commit: "，" }
-    ">" : { commit: "。" }
-    "?" : [ ？, ／, ÷ ]
-    ":" : [ ：, ； ]
-    "'" : { pair: [ "‘", "’" ] }
-    "\"" : { pair: [ "“", "”" ] }
-    "\\" : [ 、, ＼ ]
-    "|" : [ ·, ｜, "§", "¦" ]
-    "`" : ｀
-    "~" : ～
-    "!" : { commit: ！ }
-    "@" : [ ＠, ☯ ]
-    "#" : [ ＃, ⌘ ]
-    "%" : [ ％, "°", "℃" ]
-    "$" : [ ￥, "$", "€", "£", "¥", "¢", "¤" ]
-    "^" : { commit: …… }
-    "&" : ＆
-    "*" : [ ＊, ·, ・, ×, ※, ❂ ]
-    "(" : （
-    ")" : ）
-    "_" : [ ——, － ]
-    "+" : ＋
-    "=" : ＝
-    "[" : [ 「, 【, 《, 〔, ［ ]
-    "]" : [ 」, 】, 》, 〕, ］ ]
-    "{" : [ 『, 〖, 〈, ｛ ]
-    "}" : [ 』, 〗, 〉, ｝ ]
-  half_shape:
-    " ": " "
-    "`" : { commit: "₩" }
-    "$" : [ "$", "₩", "＄", "¥", "￥", "€", "£", "￡", "₤", "¢", "￠", "₵", "₡", "¤", "৳", "฿", "₠", "₢", "₣", "₥", "₦", "₧", "₪", "₫", "₭", "₮", "₯", "₰", "₱", "₲", "₳", "₴", "₶", "₷", "₸", "₹", "₺", "₨", "﷼" ]
-    "%" : [ "%", "％", "‰", "‱", "°", "℃", "℉", "Å", "㏃", "㏆", "㎈", "㏄", "㏅", "㎝", "㎠", "㎤", "㏈", "㎗", "㎙", "㎓", "㎬", "㏉", "㏊", "㏋", "㎐", "㏌", "㎄", "㎅", "㎉", "㎏", "㎑", "㏍", "㎘", "㎞", "㏎", "㎢", "㎦", "㎪", "㏏", "㎸", "㎾", "㏀", "㏐", "㏓", "㎧", "㎨", "㎡", "㎥", "㎃", "㏔", "㎆", "㎎", "㎒", "㏕", "㎖", "㎜", "㎟", "㎣", "㏖", "㎫", "㎳", "㎷", "㎹", "㎽", "㎿", "㏁", "㎁", "㎋", "㎚", "㎱", "㎵", "㎻", "㏘", "㎩", "㎀", "㎊", "㏗", "㏙", "㏚", "㎰", "㎴", "㎺", "㎭", "㎮", "㎯", "㏛", "㏜", "㎔", "㏝", "㎂", "㎌", "㎍", "㎕", "㎛", "㎲", "㎶", "㎼" ]
-    "&" : [ "&", "＆", "＃", "＠", ⅟, ½, ↉, ⅓, ⅔, ¼, ⅕, ⅖, ⅗, ⅘, ⅙, ⅚, ⅐, ⅛, ⅜, ⅝, ⅞, ⅑, ⅒ ]
-    "*" : [ "*", ＊, "﹡", ※, ❂, ★, ☆, ✡, ❋, ❊, ❉, ❈, ❇, ❆, ❅, ❄, ❃, ❁, ❀, ✿, ✾, ✽, ✼, ✻, ✺, ✹, ✸, ✷, ✶, ✵, ✴, ✳, ✲, ✱, ✰, ✯, ✮, ✭, ✬, ✫, ✪, ✩, ✧, ✦, ✥, ✤, ✣, ✢, ⛤, ⛥, ⛦, ⛧ ]
-    "^" : [ "^", "+", "-", "×", "÷", "±", "=", "≠", "＝", "＋", "－", "＜", "＞", "∈", "∏", "∑", "≮", "≯", "∕", "√", "∝", "∞", ∟, ∠, ∥, ∧, ∨, ∩, ∪, ∫, ∮, ∴, ∵, ∷, ∽, ≈, ≌, ≒, ≡, ≤, ≥, ≦, ≧, ⊕, ⊙, ⊥, ⊿, ㏑, ㏒ ]
-#    "=" : { commit: "=" }
-    "-" : { commit: "-" }
-    "," : { commit: "," }
-    "." : { commit: "." }
-    ";" : [ ";", "…", "·", "`", "'", "\"" ]
-    "'" : { pair: [ "‘", "’" ] }
-    "\"" : { pair: [ "“", "”" ] }
-#############################
+    #####################
+    "`" : { commit: "￦" }
+    "~" : { commit: "～" }
+    "!" : { commit: "！" }
+    "@" : { commit: "＠" }
+    "#" : { commit: "＃" }
+    "$" : { commit: "＄" }
+    "%" : { commit: "％" }
+    "^" : { commit: "＾" }
+    "&" : { commit: "＆" }
+    "*" : { commit: "＊" }
+    "(" : { commit: "（" }
+    ")" : { commit: "）" }
+    "-" : { commit: "－" }
+    "_" : { commit: "＿" }
+    "=" : { commit: "＝" }
+    "+" : { commit: "＋" }
+    "[" : { commit: "［" }
+    "{" : { commit: "｛" }
+    "]" : { commit: "］" }
+    "}" : { commit: "｝" }
+    "\\" : { commit: "＼" }
+    "|" : { commit: "｜" }
+    ";" : { commit: "；" }
+    ":" : { commit: "：" }
+    "'" : { commit: "＇" }
+    "\"" : { commit: "＂" }
+    "," : { commit: "，" }
+    "<" : { commit: "＜" }
+    "." : { commit: "．" }
+    ">" : { commit: "＞" }
+    "/" : { commit: "／" }
+    "?" : { commit: "？" }
+    #####################
     "A" : { commit: "ㅁ" }
     "B" : { commit: "ㅠ" }
     "C" : { commit: "ㅊ" }
     "D" : { commit: "ㅇ" }
-#    "E" : { commit: "ㄸ" }
+    # "E" : { commit: "ㄸ" }
     "F" : { commit: "ㄹ" }
     "G" : { commit: "ㅎ" }
     "H" : { commit: "ㅗ" }
@@ -161,27 +154,95 @@ punctuator:
     "L" : { commit: "ㅣ" }
     "M" : { commit: "ㅡ" }
     "N" : { commit: "ㅜ" }
-#    "O" : { commit: "ㅒ" }
-#    "P" : { commit: "ㅖ" }
-#    "Q" : { commit: "ㅃ" }
-#    "R" : { commit: "ㄲ" }
+    # "O" : { commit: "ㅒ" }
+    # "P" : { commit: "ㅖ" }
+    # "Q" : { commit: "ㅃ" }
+    # "R" : { commit: "ㄲ" }
     "S" : { commit: "ㄴ" }
-#    "T" : { commit: "ㅆ" }
+    # "T" : { commit: "ㅆ" }
     "U" : { commit: "ㅕ" }
     "V" : { commit: "ㅍ" }
-#    "W" : { commit: "ㅉ" }
+    # "W" : { commit: "ㅉ" }
     "X" : { commit: "ㅌ" }
     "Y" : { commit: "ㅛ" }
     "Z" : { commit: "ㅋ" }
-#############################
+    #####################
+  half_shape:
+    " ": " "
+    #####################
+    "`" : { commit: "₩" }
+    "~" : { commit: "~" }
+    "!" : { commit: "!" }
+    "@" : { commit: "@" }
+    "#" : { commit: "#" }
+    "$" : { commit: "$" }
+    "%" : { commit: "%" }
+    "^" : { commit: "^" }
+    "&" : { commit: "&" }
+    "*" : { commit: "*" }
+    "(" : { commit: "(" }
+    ")" : { commit: ")" }
+    "-" : { commit: "-" }
+    "_" : { commit: "_" }
+    "=" : { commit: "=" }
+    "+" : { commit: "+" }
+    "[" : { commit: "[" }
+    "{" : { commit: "{" }
+    "]" : { commit: "]" }
+    "}" : { commit: "}" }
+    "\\" : { commit: "\\" }
+    "|" : { commit: "|" }
+    ";" : { commit: ";" }
+    ":" : { commit: ":" }
+    "'" : { commit: "'" }
+    "\"" : { commit: "\"" }
+    "," : { commit: "," }
+    "<" : { commit: "<" }
+    "." : { commit: "." }
+    ">" : { commit: ">" }
+    "/" : { commit: "/" }
+    "?" : { commit: "?" }
+    #####################
+    "A" : { commit: "ㅁ" }
+    "B" : { commit: "ㅠ" }
+    "C" : { commit: "ㅊ" }
+    "D" : { commit: "ㅇ" }
+    # "E" : { commit: "ㄸ" }
+    "F" : { commit: "ㄹ" }
+    "G" : { commit: "ㅎ" }
+    "H" : { commit: "ㅗ" }
+    "I" : { commit: "ㅑ" }
+    "J" : { commit: "ㅓ" }
+    "K" : { commit: "ㅏ" }
+    "L" : { commit: "ㅣ" }
+    "M" : { commit: "ㅡ" }
+    "N" : { commit: "ㅜ" }
+    # "O" : { commit: "ㅒ" }
+    # "P" : { commit: "ㅖ" }
+    # "Q" : { commit: "ㅃ" }
+    # "R" : { commit: "ㄲ" }
+    "S" : { commit: "ㄴ" }
+    # "T" : { commit: "ㅆ" }
+    "U" : { commit: "ㅕ" }
+    "V" : { commit: "ㅍ" }
+    # "W" : { commit: "ㅉ" }
+    "X" : { commit: "ㅌ" }
+    "Y" : { commit: "ㅛ" }
+    "Z" : { commit: "ㅋ" }
+    #####################
 
 key_binder:
   import_preset: default
   bindings:
+### 避 RIME 原設定鍵位衝突 ###
     - {accept: comma, send: comma, when: has_menu}
+    - {accept: comma, send: comma, when: paging}
     - {accept: period, send: period, when: has_menu}
+    - {accept: period, send: period, when: paging}
     - {accept: minus, send: minus, when: has_menu}
+    - {accept: minus, send: minus, when: paging}
     - {accept: equal, send: equal, when: has_menu}
+    - {accept: equal, send: equal, when: paging}
 ######################
     - {accept: Left, send: Page_Up, when: paging}
     - {accept: Right, send: Page_Down, when: paging}
