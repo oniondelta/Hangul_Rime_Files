@@ -51,13 +51,14 @@ local function processor(key, env)
   local context = engine.context
   local c_input = context.input
   local caret_pos = context.caret_pos
-  -- local comp = context.composition
+  local comp = context.composition
+  local seg = comp:back()
   local g_c_t = context:get_commit_text()
   local o_ascii_mode = context:get_option("ascii_mode")
   local o_kr_0m = context:get_option("kr_0m")
   local o_space_mode = context:get_option("space_mode")
 
-  local hangul_b = string.sub(g_c_t,-6,-4) or ""  -- 確認倒數第二字是否為諺文用
+  -- local hangul_b = string.sub(g_c_t,-6,-4) or ""  -- 確認倒數第二字是否為諺文用
 
 
   --- pass ascii_mode
@@ -84,7 +85,9 @@ local function processor(key, env)
     return 1
 
   --- pass reverse_lookup prefix （使反查鍵可展示全部選項）(沒開，即使 commit_composition 上屏，還是無法顯示選單)
-  elseif string.match(c_input, "=[a-z]?[a-z]?[a-z]?[a-z]?[a-z]?$") then
+  elseif context:is_composing() and seg:has_tag("reverse_lookup")then
+  -- elseif not comp:empty() and seg:has_tag("reverse_lookup")then
+  -- elseif string.match(c_input, "=[a-z]?[a-z]?[a-z]?[a-z]?[a-z]?$") then
     return 2
 
 
@@ -222,6 +225,7 @@ local function processor(key, env)
 
     --- 修正尾綴「;」出漢字，使其可展示選單
     elseif (key:repr() == "semicolon") then
+      local hangul_b = string.sub(g_c_t,-6,-4) or ""  -- 確認倒數第二字是否為諺文用
       -- local cxtil = string.len(g_c_t) - caret_pos
       --- 開頭防止漢字不 reopen 去組字。
       if (string.len(g_c_t) == 3) then  -- 3等同一個諺文單位的字符長度
@@ -308,10 +312,12 @@ local function processor(key, env)
   -- elseif not context:get_option("kr_0m") then
 
     --- 不在輸入狀態略過處理
-    if not context:is_composing() or not o_space_mode or key:repr() ~= "space" then
+    if not context:has_menu() or not o_space_mode or key:repr() ~= "space" then
+    -- if not context:is_composing() or not o_space_mode or key:repr() ~= "space" then
       return 2
 
-    elseif string.match(c_input, "^[a-zQWERTOP]+$") and not string.match(g_c_t, "[%a%c%s]") then  -- 提到前面限定 and (caret_pos == c_input:len())
+    elseif string.match(c_input, "^[a-zQWERTOP]+$") then  -- 提到前面限定 and (caret_pos == c_input:len())
+    -- elseif string.match(c_input, "^[a-zQWERTOP]+$") and not string.match(g_c_t, "[%a%c%s]") then  -- 提到前面限定 and (caret_pos == c_input:len())
       engine:commit_text(g_c_t .. " ")
       context:clear()
       return 1

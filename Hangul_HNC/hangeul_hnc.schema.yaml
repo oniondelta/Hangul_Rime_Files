@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul_hnc # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語HNC❃
-  version: "202304"
+  version: "202305"
   author:
     - 『洋蔥』
   description: |
@@ -127,7 +127,8 @@ punctuator:
   use_space: true
   full_shape:
     # " " : { commit: "　" }
-    "`" : { commit: "₩" }
+    #####################
+    "`" : { commit: "￦" }
     "~" : { commit: "～" }
     "!" : { commit: "！" }
     "@" : { commit: "＠" }
@@ -139,28 +140,30 @@ punctuator:
     "*" : { commit: "＊" }
     "(" : { commit: "（" }
     ")" : { commit: "）" }
-    "_" : { commit: "＿" }
     "-" : { commit: "－" }
-    "+" : { commit: "＋" }
+    "_" : { commit: "＿" }
     "=" : [ "＝" ]
+    "+" : { commit: "＋" }
     "[" : { commit: "［" }
-    "]" : { commit: "］" }
     "{" : { commit: "｛" }
+    "]" : { commit: "］" }
     "}" : { commit: "｝" }
     "\\" : { commit: "＼" }
     "|" : { commit: "｜" }
     ";" : { commit: "；" }
     ":" : { commit: "：" }
     "'" : { commit: "＇" }
-    '"' : { commit: '＂' }
+    "\"" : { commit: "＂" }
     "," : { commit: "，" }
-    "." : { commit: "．" }
     "<" : { commit: "＜" }
+    "." : { commit: "．" }
     ">" : { commit: "＞" }
     "/" : { commit: "／" }
     "?" : { commit: "？" }
+    #####################
   half_shape:
     " ": " "
+    #####################
     "`" : { commit: "₩" }
     "~" : { commit: "~" }
     "!" : { commit: "!" }
@@ -173,27 +176,27 @@ punctuator:
     "*" : { commit: "*" }
     "(" : { commit: "(" }
     ")" : { commit: ")" }
-    "_" : { commit: "_" }
     "-" : { commit: "-" }
-    "+" : { commit: "+" }
+    "_" : { commit: "_" }
     "=" : [ "=" ]
+    "+" : { commit: "+" }
     "[" : { commit: "[" }
-    "]" : { commit: "]" }
     "{" : { commit: "{" }
+    "]" : { commit: "]" }
     "}" : { commit: "}" }
     "\\" : { commit: "\\" }
     "|" : { commit: "|" }
     ";" : { commit: ";" }
     ":" : { commit: ":" }
     "'" : { commit: "'" }
-    '"' : { commit: '"' }
+    "\"" : { commit: "\"" }
     "," : { commit: "," }
-    "." : { commit: "." }
     "<" : { commit: "<" }
+    "." : { commit: "." }
     ">" : { commit: ">" }
     "/" : { commit: "/" }
     "?" : { commit: "?" }
-
+    #####################
 
 key_binder:
   import_preset: default
@@ -240,4 +243,4 @@ recognizer:
   patterns:
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$"
-    reverse_lookup: "^=[a-z]*'?$"
+    reverse_lookup: "=[a-z]*'?$"
