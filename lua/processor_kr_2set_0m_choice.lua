@@ -58,7 +58,7 @@ local function processor(key, env)
   local o_kr_0m = context:get_option("kr_0m")
   local o_space_mode = context:get_option("space_mode")
 
-  -- local hangul_b = string.sub(g_c_t,-6,-4) or ""  -- 確認倒數第二字是否為諺文用
+  -- local hangul_b = string.sub(g_c_t,-6,-4)  -- 確認倒數第二字是否為諺文用
 
 
   --- pass ascii_mode
@@ -100,7 +100,8 @@ local function processor(key, env)
 
 
   --- 避免中途插入碼變到最後
-  elseif (caret_pos ~= c_input:len()) then
+  elseif caret_pos ~= #c_input then
+  -- elseif (caret_pos ~= c_input:len()) then
     return 2
 
 
@@ -224,18 +225,19 @@ local function processor(key, env)
 
 
     --- 修正尾綴「;」出漢字，使其可展示選單
-    elseif (key:repr() == "semicolon") then
-      local hangul_b = string.sub(g_c_t,-6,-4) or ""  -- 確認倒數第二字是否為諺文用
+    elseif key:repr() == "semicolon" then
+      local hangul_b = string.sub(g_c_t,-6,-4)  -- 確認倒數第二字是否為諺文用
       -- local cxtil = string.len(g_c_t) - caret_pos
       --- 開頭防止漢字不 reopen 去組字。
-      if (string.len(g_c_t) == 3) then  -- 3等同一個諺文單位的字符長度
+      if #g_c_t == 3 then  -- 3等同一個諺文單位的字符長度
+      -- if (string.len(g_c_t) == 3) then  -- 3等同一個諺文單位的字符長度
       -- if string.match(c_input, "^..$") then
         context:reopen_previous_segment()
         -- context.input = c_input .. ";"
         context:push_input( ";" )
         return 1
       --- 檢視倒數第二個字是否為諺文，如果是讓選單只選漢字，避免還要從諺文開始選。
-      elseif (check_korea(hangul_b) == true) then
+      elseif check_korea(hangul_b) == true then
         context:reopen_previous_segment()
         engine:process_key( KeyEvent("Shift+Tab") )
         -- context:confirm_current_selection()
@@ -269,7 +271,7 @@ local function processor(key, env)
 
 
     --- 使「\\」可分節
-    elseif (key:repr() == "backslash") then
+    elseif key:repr() == "backslash" then
       context:reopen_previous_segment()
       -- context.input = c_input .. "\\"
       context:push_input( "\\" )
