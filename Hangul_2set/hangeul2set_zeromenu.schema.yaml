@@ -85,6 +85,8 @@ speller:
     - derive/^E/ee/
     - derive/^R/rr/
     - derive/^T/tt/
+    - derive/O/oo/ ### derive/O/oo/ 不符合 Mac 韓語輸入法
+    - derive/P/pp/ ### derive/P/pp/ 不符合 Mac 韓語輸入法
     - abbrev/^([a-zQWERTOP]+)$/$1;/  #讓沒有對應漢字之諺文，在誤按「;」後不用修正。
 
 translator:
