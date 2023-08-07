@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set_zeromenu # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: "❃韓語2set❃（零選單）"
-  version: "202305"
+  version: "202308"
   author:
     - 『洋蔥』
   description: |
@@ -422,8 +422,13 @@ key_binder:
     - {accept: Down, send: Down, when: paging}
     - {accept: Right, send: Right, when: composing} #移到開頭並展開選單
     - {accept: Right, send: Shift+Right, when: has_menu} #右移一整個字
+## 上排切換(Mac)
     - {accept: Control+Shift+5, toggle: kr_0m, when: always}
     - {accept: Control+Shift+6, toggle: space_mode, when: always}
+## 上排切換(Win)
+    - {accept: Control+Shift+percent, toggle: kr_0m, when: always}
+    - {accept: Control+Shift+asciicircum, toggle: space_mode, when: always}
+## 切換樣態
     - {accept: Control+semicolon, toggle: kr_0m, when: always}
     - {accept: Control+apostrophe, toggle: space_mode, when: always}
 ### 以下修正數字鍵無法選字問題。
