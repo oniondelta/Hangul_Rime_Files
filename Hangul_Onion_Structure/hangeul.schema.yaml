@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語形碼❃
-  version: "202305"
+  version: "202404"
   author:
     - 『洋蔥』
   description: |
@@ -56,9 +56,9 @@ speller:
 
 translator:
   dictionary: hangeul.extended
-  enable_user_dict: true
-  enable_sentence: false
+  enable_charset_filter: false
   enable_completion: false
+  enable_user_dict: true
   preedit_format:
     - "xlit|abcdefghijklmnopqrstuvwxyz'|ABCDEFGHIJKLMNOPQRSTUVWXYZ |"
   comment_format:
@@ -76,7 +76,13 @@ translator:
 
 reverse_lookup:
   dictionary: cangjie5
+  enable_charset_filter: false
+  # enable_encoder: false
+  # encode_commit_history: false
+  # enable_sentence: false
   enable_completion: false
+  # sentence_over_completion: false
+  enable_user_dict: true
   prefix: "="
   suffix: "'"
   tips: 〔漢字反查〕

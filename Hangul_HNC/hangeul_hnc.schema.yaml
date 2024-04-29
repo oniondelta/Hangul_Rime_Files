@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul_hnc # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語HNC❃
-  version: "202308"
+  version: "202404"
   author:
     - 『洋蔥』
   description: |
@@ -87,9 +87,9 @@ speller:
 translator:
   dictionary: hangeul_hnc.extended
   # prism: hangeul_hnc
-  enable_user_dict: true
-  enable_sentence: false
+  enable_charset_filter: false
   enable_completion: false
+  enable_user_dict: true
   disable_user_dict_for_patterns:
     - ^[a-z]+[/]?[/abcdefghijklmnopqrstuwxyz]$
   preedit_format:
@@ -113,7 +113,13 @@ translator:
 
 reverse_lookup:
   dictionary: cangjie5
+  enable_charset_filter: false
+  # enable_encoder: false
+  # encode_commit_history: false
+  # enable_sentence: false
   enable_completion: false
+  # sentence_over_completion: false
+  enable_user_dict: true
   prefix: "="
   suffix: "'"
   tips: 〔漢字反查〕
