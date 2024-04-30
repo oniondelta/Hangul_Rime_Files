@@ -7,8 +7,9 @@
 
 - http://deltazone.pixnet.net/blog/post/264243364
 
-![介紹1](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/hangul2020_en-1.jpg)
-![介紹2](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/hangul2020_en-2.jpg)
+![介紹1](https://github.com/oniondelta/Hangul_Rime_Files/assets/54584047/88bb913a-d2fd-4410-9e92-f29c59426b3e)
+![介紹2](https://github.com/oniondelta/Hangul_Rime_Files/assets/54584047/18a4ddb9-224f-424f-81de-15fe926569ba)
+
 
 ## 贊助 (Donate)
 
