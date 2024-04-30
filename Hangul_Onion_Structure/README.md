@@ -6,15 +6,15 @@
 
 ## 鍵位
 
-![keyboard-layout](https://github.com/oniondelta/Hangul_Rime_Files/assets/54584047/42b346fe-3c0f-4699-a71a-ea06a5f9bfc6)
+![keyboard-layout](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/img/hangul_onion_structure_keyboard-layout.png)
 
 
 ## 編碼說明
 
 - http://deltazone.pixnet.net/blog/post/264243364
 
-![介紹1](https://github.com/oniondelta/Hangul_Rime_Files/assets/54584047/88bb913a-d2fd-4410-9e92-f29c59426b3e)
-![介紹2](https://github.com/oniondelta/Hangul_Rime_Files/assets/54584047/18a4ddb9-224f-424f-81de-15fe926569ba)
+![介紹1](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/img/hangul2020-1.jpg)
+![介紹2](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/img/hangul2020-2.jpg)
 
 
 ## 贊助 (Donate)
