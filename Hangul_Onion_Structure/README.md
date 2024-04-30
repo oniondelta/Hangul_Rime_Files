@@ -3,6 +3,12 @@
 #### ※ 請勿使用於商業營利相關行為
 #### ※ Commercial use is prohibited
 
+
+## 鍵位
+
+![keyboard-layout](https://github.com/oniondelta/Hangul_Rime_Files/assets/54584047/42b346fe-3c0f-4699-a71a-ea06a5f9bfc6)
+
+
 ## 編碼說明
 
 - http://deltazone.pixnet.net/blog/post/264243364
