@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set_zeromenu # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: "❃韓語2set❃（零選單）"
-  version: "202404"
+  version: "202405"
   author:
     - 『洋蔥』
   description: |
@@ -92,7 +92,7 @@ speller:
 translator:
   dictionary: hangeul2set.extended
   prism: hangeul2set_zeromenu
-  enable_charset_filter: false
+  # enable_charset_filter: false
   enable_completion: false
   enable_user_dict: true
   disable_user_dict_for_patterns:
@@ -216,7 +216,7 @@ translator:
 
 reverse_lookup:
   dictionary: cangjie5
-  enable_charset_filter: false
+  # enable_charset_filter: false
   # enable_encoder: false
   # encode_commit_history: false
   # enable_sentence: false
@@ -435,8 +435,14 @@ key_binder:
     - {accept: Control+Shift+percent, toggle: kr_0m, when: always}
     - {accept: Control+Shift+asciicircum, toggle: space_mode, when: always}
 ## 切換樣態
-    - {accept: Control+semicolon, toggle: kr_0m, when: always}
-    - {accept: Control+apostrophe, toggle: space_mode, when: always}
+    - {accept: Control+semicolon, unset_option: kr_0m, when: always}
+    - {accept: Control+apostrophe, unset_option: space_mode, when: always}
+## 初始樣態(Mac)
+    - {accept: Control+Shift+semicolon, set_option: kr_0m, when: always}
+    - {accept: Control+Shift+apostrophe, set_option: space_mode, when: always}
+## 初始樣態(Win)
+    - {accept: Control+Shift+colon, set_option: kr_0m, when: always}
+    - {accept: Control+Shift+quotedbl, set_option: space_mode, when: always}
 ### 以下修正數字鍵無法選字問題。
     - {accept: 1, send: Control+1, when: has_menu}
     - {accept: 2, send: Control+2, when: has_menu}

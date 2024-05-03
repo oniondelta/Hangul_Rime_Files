@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul2set # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語2set❃
-  version: "202404"
+  version: "202405"
   author:
     - 『洋蔥』
   description: |
@@ -83,7 +83,7 @@ speller:
 translator:
   dictionary: hangeul2set.extended
   prism: hangeul2set
-  enable_charset_filter: false
+  # enable_charset_filter: false
   enable_completion: false
   enable_user_dict: true
   disable_user_dict_for_patterns:
@@ -211,7 +211,7 @@ translator:
 
 reverse_lookup:
   dictionary: cangjie5
-  enable_charset_filter: false
+  # enable_charset_filter: false
   # enable_encoder: false
   # encode_commit_history: false
   # enable_sentence: false
@@ -373,8 +373,10 @@ key_binder:
     - {accept: minus, send: minus, when: paging}
     - {accept: equal, send: equal, when: has_menu}
     - {accept: equal, send: equal, when: paging}
+### 切分移位 ###
     - {accept: Up, send: KP_Left, when: composing} #左移一個注音
     - {accept: Up, send: Up, when: paging} #修正上條目出現的bug
+##
     - {accept: Right, send: Shift+Right, when: composing} #右移一整個字
     - {accept: Shift+Right, send: Right, when: composing} #右移一個注音
     - {accept: Shift+Left, send: KP_Left, when: composing} #左移一個注音
