@@ -17,9 +17,9 @@
 ![介紹2](https://github.com/oniondelta/Hangul_Rime_Files/blob/main/Hangul_Onion_Structure/img/hangul2020-2.jpg)
 
 
-## 贊助 (Donate)
+## 贊助 Donate
 
-方案已持續更新五年以上！大改、新創、新增非常多功能！做了許多圖文說明！花了族繁不及備載的心力！
+方案已持續更新六年以上！大改、新創、新增非常多功能！做了許多圖文說明！花了族繁不及備載的心力！
 
 贊助 (Donate) 支持，讓 Rime 洋蔥一系列方案更新更有動力！
 
