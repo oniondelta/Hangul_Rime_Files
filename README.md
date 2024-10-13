@@ -42,7 +42,23 @@
 ![193610423-fe3faffa-3143-45ab-a347-e9bba7b00425](https://user-images.githubusercontent.com/54584047/203571115-e429b0c6-5714-4456-95fa-a9667e3deec0.gif)
 
 
-## 使用方案
+## 使用方案（直接下載分類好之檔案）
+
+1. 本倉庫 Releases 中，有分類好之檔案。（不一定更到最新）
+
+2. 本倉庫 Actions 中，其 sort_Hangul_Rime_Files_output 裡 artifact 有已跑好 sort_Hangul_Rime_Files.py 分類之檔案！（不一定更到最新，需登錄 GitHub 帳號）
+
+3. 以上擇一下載後，選取欲使用之韓文方案，內含文件通通放入『 Rime 』用戶設定資料夾，「重新部署」方可。
+
+## 使用方案（用 sort_Hangul_Rime_Files.py 分類）
+
+1. 本倉庫 Hangul_Rime_Files 按右上綠色 〔↓Code〕 ⇨ Download ZIP ⇨ 解壓縮 ZIP 進入資料夾 ⇨ Python 執行 sort_Hangul_Rime_Files.py ⇨ 產生『電腦RIME韓文方案-{當天日期}』資料夾
+
+2. 『電腦RIME韓文方案-{當天日期}』，三種鍵位韓文方案所需文件，分別放置於下層『方案名稱』資料夾。
+
+3. 選取欲使用之韓文方案，內含文件通通放入『 Rime 』用戶設定資料夾，「重新部署」方可。
+
+## 使用方案（手動）
 
 1. 點右上綠色 〔↓Code〕 選擇 Download ZIP 下載。
 
