@@ -35,7 +35,7 @@
 - 前綴「 = 」反查漢字其諺文發音
 
 
-## hangeul2set_zeromenu 方案可隱藏候選項
+## Hangul_2set 方案可隱藏候選項
 
 <!--之前版本才有的問題：該方案有用到 librime-lua 新函數 KeyEvent，務必更換新的 librime 核心，否則無效果且報錯，詳見[說明](https://github.com/oniondelta/Onion_Rime_Files/wiki/%E6%8E%A8%E8%96%A6-Rime-%E4%B8%BB%E7%A8%8B%E5%BC%8F%E5%AE%89%E8%A3%9D%E4%B9%8B%E7%89%88%E6%9C%AC%E5%92%8C%E6%96%B9%E6%B3%95)  -->
 
