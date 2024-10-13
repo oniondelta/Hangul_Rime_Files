@@ -27,6 +27,9 @@ shutil.copyfile("./essay-kr-hanja.txt", "./sort_hangul_rime_files/Hangul_Onion_S
 shutil.copytree('./cin/', './sort_hangul_rime_files/other/cin')
 shutil.copytree('./trime/', './sort_hangul_rime_files/other/trime')
 
+#複製說明文件
+shutil.copyfile("./README.md", "./sort_hangul_rime_files/README.md")
+
 
 
 
