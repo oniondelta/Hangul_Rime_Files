@@ -4,7 +4,7 @@
 schema:
   schema_id: hangeul_hnc # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語HNC❃
-  version: "202405"
+  version: "202606"
   author:
     - 『洋蔥』
   description: |
@@ -76,12 +76,21 @@ speller:
     - derive/^p/f/
     - derive/p$/f/
 ##### 韓文HNC正碼轉寫結束 #####
-    - abbrev/@//
-    # - 'xlit|@|/|' #
-    - 'xlit|/@|qq|'
-    - derive|q|/| #
-    - derive|;|v| #
-    # - xform|;|v| #
+    ### 舊 ###
+    # - abbrev/@//
+    # # - 'xlit|@|/|' #
+    # - 'xlit|/@|qq|'
+    # - derive|q|/| #
+    # - derive|;|v| #
+    # # - xform|;|v| #
+    ### 新，避免影響「標點符號」之編碼 ###
+    - derive|(?<=\w)([@])$|/| #一般單音
+    - derive|(?<=\w)[/]$|q|
+    - derive|(?<=\w)[/][/]$|qq|
+    - derive|(?<=\w);$|v| #漢字
+    ##
+    - xform|(?<=\w)([/][/]?)$|$1@|
+    - abbrev/@$//
 
 
 translator:
@@ -95,11 +104,11 @@ translator:
   preedit_format:
     - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
     - xform/QQ/‹ʜᴊ›/
-    - xform|[/][/]|‹ʜᴊ›|
+    - xform|(?<=\w)[/][/]|‹ʜᴊ›|
     - xform/Q/‹ʜᴄᴊ›/
-    - xform|[/]|‹ʜᴄᴊ›|
+    - xform|(?<=\w)[/]|‹ʜᴄᴊ›|
     - xform/V/‹漢›/
-    - xform/;/‹漢›/  #
+    - xform/(?<=\w);/‹漢›/  #
     # - xform/;/ /  #
     - xform/'/ /  #
 
